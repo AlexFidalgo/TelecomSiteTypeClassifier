@@ -13,7 +13,7 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
 1. Clone this repository:
 
    ```shell
-   git clone https://github.com/your-username/TelecomSiteTypeClassifier.git
+   git clone https://github.com/AlexFidalgo/TelecomSiteTypeClassifier.git
    cd TelecomSiteTypeClassifier
    
 
