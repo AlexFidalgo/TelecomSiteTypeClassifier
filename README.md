@@ -15,3 +15,24 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
    ```shell
    git clone https://github.com/your-username/TelecomSiteTypeClassifier.git
    cd TelecomSiteTypeClassifier
+   
+
+2. Download the dataset from Anatel's website [Anatel](https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php) and place it in the data/ directory.
+
+3. Install the necessary dependencies (Python and required libraries).
+
+4. Open and run the Jupyter notebooks for data exploration, preprocessing, model development, and evaluation.
+
+## Acknowledgments
+
+Thanks to Anatel for providing the dataset for this project.
+
+## Author
+
+Alex Fidalgo
+
+## Connect with Me
+
+LinkedIn: [Alex Fidalgo](https://www.linkedin.com/in/alex-zamikhowsky/)
+
+
