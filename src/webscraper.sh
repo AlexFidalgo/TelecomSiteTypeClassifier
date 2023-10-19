@@ -59,7 +59,8 @@ curl_cmd="curl -A 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100
      -H 'Sec-Fetch-Site: same-origin' \
      -c cookies.txt \
      -b cookies.txt \
-     -o response.html"
+     -o response.html\
+     https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php?view=licenciamento"
 
 # Loop through the fields array and generate the field and value for the cURL command
 for field in "${fields[@]}"; do
@@ -70,7 +71,7 @@ for field in "${fields[@]}"; do
 done
 
 # Append the URL for the POST request
-curl_cmd="$curl_cmd $url"
+curl_cmd="$curl_cmd"
 
 # Make the POST request to download the CSV file
 response_json=$($curl_cmd)
