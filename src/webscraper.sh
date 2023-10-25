@@ -1,5 +1,11 @@
 #!/bin/bash
 
+extract_json_value() {
+  local key="$1"
+  local json="$2"
+  echo "$json" | jq -r ".$key"
+}
+
 # Function to generate the form field and value
 generate_field() {
   local field_name="$1"
@@ -47,7 +53,7 @@ done
 fields+=("wfid=licencas")
 fields+=("view=licenciamento")
 
-curl_cmd="curl -A 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/117.0' \
+curl_cmd="curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82' \
      -H 'Accept: */*' \
      -H 'Accept-Encoding: gzip, deflate, br' \
      -H 'Accept-Language: en-US,en;q=0.5' \
