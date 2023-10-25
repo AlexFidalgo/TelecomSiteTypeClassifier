@@ -21,5 +21,3 @@ if __name__ == '__main__':
     merged_file_path = './data/merged_data.csv'
     
     df = read_csv(merged_file_path, separator=';')
-
-    x = 1
