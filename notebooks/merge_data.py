@@ -32,12 +32,13 @@ def clear(csv_files_dir):
             print(f"Deleted: {file_path}")
 
 if __name__ == '__main__':
+
     csv_files_dir = './data/csv_files'
     output_file = './data/merged_data.csv'
     zip_files_dir = './data/zip_files'
 
-    merge_files(csv_files_dir, output_file)
+    # merge_files(csv_files_dir, output_file)
 
-    clear(csv_files_dir)
+    # clear(csv_files_dir)
 
     clear(zip_files_dir)
