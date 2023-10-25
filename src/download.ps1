@@ -1,10 +1,3 @@
-function request_text($uf) {
-
-    $name =
-
-return $name
-}
-
 $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
 
 $session.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82"
@@ -37,13 +30,18 @@ foreach($uf in $ufarray){
 	$redirect = $redirect | ConvertFrom-Json
 	
 	$downloadurl = 'https://sistemas.anatel.gov.br/se/public/view/b/export_licenciamento.php'+$redirect.redirectUrl
+
+	$scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
+	$parentDirectory = Split-Path -Parent $scriptDirectory
+	$destpath = Join-Path $parentDirectory "data\zip_files"
 	
-        $destpath = ".\download_temp\$uf.zip"
-        
-        if (-Not (Test-Path -Path ".\download_temp" -PathType Container)) {
-            New-Item -Path ".\download_temp" -ItemType Directory
-        }
-        
-        Invoke-WebRequest $downloadurl -OutFile $destpath
+	if (-Not (Test-Path -Path $destpath -PathType Container)) {
+		New-Item -Path $destpath -ItemType Directory
+	}
+
+	$destpath = Join-Path $destpath "$uf.zip"
+	
+	Invoke-WebRequest $downloadurl -OutFile $destpath
+	
 }
 
