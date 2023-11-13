@@ -15,13 +15,20 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
    ```shell
    git clone https://github.com/AlexFidalgo/TelecomSiteTypeClassifier.git
    cd TelecomSiteTypeClassifier
-   
-
-2. Download the dataset from Anatel's website [Anatel](https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php) and place it in the data/ directory.
+   ```
 
 3. Install the necessary dependencies (Python and required libraries).
 
-4. Open and run the Jupyter notebooks for data exploration, preprocessing, model development, and evaluation.
+3. Run the `main.py` script to download and preprocess the dataset:
+
+   ```shell
+   python main.py
+   ```
+
+   The `main.py` script will execute the `download.ps1` PowerShell script, which downloads all data from [Anatel](https://sistemas.anatel.gov.br/se/public/view/b/export_licenciamento.php) into zip files in the `zip_files` directory. Then, it will unzip these files to CSV files under the `csv_files` directory and delete the zip files.
+
+4. Explore the data using the `explore_data.ipynb` Jupyter notebook.
+```
 
 ## Acknowledgments
 
