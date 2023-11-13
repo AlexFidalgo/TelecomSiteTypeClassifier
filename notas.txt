@@ -1,0 +1,2 @@
+Considere quebrar designação emissão em mais colunas. Mas terá de fazer isso antes de agregar
+(criar o dfg)
