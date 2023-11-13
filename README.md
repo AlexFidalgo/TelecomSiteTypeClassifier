@@ -25,10 +25,10 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
    python main.py
    ```
 
-   The `main.py` script will execute the `download.ps1` PowerShell script, which downloads all data from [Anatel](https://sistemas.anatel.gov.br/se/public/view/b/export_licenciamento.php) into zip files in the `zip_files` directory. Then, it will unzip these files to CSV files under the `csv_files` directory and delete the zip files.
+   The `main.py` script will execute the `download.ps1` PowerShell script, which downloads all data from [Anatel](https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php?view=licenciamento) into zip files in the `zip_files` directory. Then, it will unzip these files to CSV files under the `csv_files` directory and delete the zip files.
 
 4. Explore the data using the `explore_data.ipynb` Jupyter notebook.
-```
+
 
 ## Acknowledgments
 
