@@ -2,7 +2,7 @@
 
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A machine learning project that predicts telecom site types such as rooftops, greenfields, and more.
+A machine learning project that predicts telecom site types: rooftop, greenfield, indoor, or street-level.
 
 ## Overview
 
