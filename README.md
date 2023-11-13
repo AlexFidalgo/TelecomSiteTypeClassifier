@@ -19,7 +19,7 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
 
 2. Install the necessary dependencies (Python and required libraries).
 
-3. Run the `main.py` script to download and preprocess the dataset:
+3. Run the `notebooks/main.py` script to download and preprocess the dataset:
 
    ```shell
    python main.py
