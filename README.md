@@ -2,7 +2,7 @@
 
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A machine learning project that predicts telecom site types: rooftop, greenfield, indoor, or street-level.
+A machine learning project that predicts telecom site types: Greenfield, Streetlevel, Ran Sharing, Small Cell, COW, Picocell, Harmonized, Rooftop, Indoor, Outdoor.
 
 ## Overview
 
@@ -33,7 +33,11 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
 
 4. Explore the data using the `explore_data.ipynb` Jupyter notebook.
 
+5. Perform data treatment by running  `transform_data.py`.
+
 ## Running Machine Learning Analyses
+
+
 
 
 ## Acknowledgments
