@@ -1,2 +1,8 @@
 Considere quebrar designação emissão em mais colunas. Mas terá de fazer isso antes de agregar
 (criar o dfg)
+
+
+transform_data.py necessary actions: 
+    - df = replace_values(df, 'ClassInfraFisica', 'Streetlevel ', 'Streetlevel')
+    - transformar designação emissão em coluna(s) mais informativas
+    
