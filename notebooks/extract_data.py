@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 def get_list_of_zip_files(zip_dir):
 
-    file_list = os.listdir(zip_files_dir)
+    file_list = os.listdir(zip_dir)
     return file_list
 
 def unzip_files(zip_dir, csv_dir):
