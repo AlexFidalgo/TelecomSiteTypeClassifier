@@ -46,3 +46,23 @@ def read_csv(file_path, separator = ','):
 
     df = pl.read_csv(file_path, ignore_errors = True, dtypes = dtypes, separator = separator)
     return df
+
+def strip_column(df: pl.DataFrame, column_name: str) -> pl.DataFrame:
+    """
+    Strip whitespace from a specified column in a Polars DataFrame.
+
+    Parameters:
+    - df: Polars DataFrame
+    - column_name: Name of the column to be cleaned and stripped
+
+    Returns:
+    - Stripped Polars DataFrame
+    """
+
+    s = pl.Series(
+        df[column_name].map_elements(lambda x: x.strip() if isinstance(x, str) else x)
+    )
+
+    df = df.with_columns(s.alias(column_name))
+
+    return df
