@@ -3,7 +3,7 @@ Considere quebrar designação emissão em mais colunas. Mas terá de fazer isso
 
 
 transform_data.py necessary actions: 
-    - df = replace_values(df, 'ClassInfraFisica', 'Streetlevel ', 'Streetlevel')
+    - fazer unittest do strip
     - transformar designação emissão em coluna(s) mais informativas
         - ao invés de ter listas de atributos, criar colunas novas indicando tem_tal_atributo ou
         quantidade_de_vezes_que_tem_tal_atributo
