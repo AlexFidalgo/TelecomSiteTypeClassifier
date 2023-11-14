@@ -1,4 +1,5 @@
 import polars as pl
+import pandas as pd
 
 def replace_values(df, column_name, old_value, new_value):
     """
@@ -66,3 +67,28 @@ def strip_column(df: pl.DataFrame, column_name: str) -> pl.DataFrame:
     df = df.with_columns(s.alias(column_name))
 
     return df
+
+def concatenate_columns(row, first_column, second_column):
+    """
+    Concatenates values from two columns of a DataFrame row, handling null values.
+
+    Parameters:
+    - row (pandas.Series): A row from a DataFrame.
+    - first_column (str): Name of the first column to concatenate.
+    - second_column (str): Name of the second column to concatenate.
+
+    Returns:
+    str or None: Concatenated string based on the values of the specified columns.
+    """
+    first_value = str(row[first_column]) if pd.notna(row[first_column]) else None
+    second_value = str(row[second_column]) if pd.notna(row[second_column]) else None
+
+    if first_value and second_value:
+        return first_value + '_' + second_value
+    elif first_value:
+        return first_value
+    elif second_value:
+        return second_value
+    else:
+        return None
+
