@@ -1,7 +1,7 @@
-import polars as pl
 import pandas as pd
+import polars as pl
 
-def replace_values(df, column_name, old_value, new_value):
+def replace_values_pl(df, column_name, old_value, new_value):
     """
     Replace old values with new values in a specified column of a Polars DataFrame.
 
@@ -22,7 +22,24 @@ def replace_values(df, column_name, old_value, new_value):
     
     return df
 
-def read_csv(file_path, separator = ','):
+def replace_values(df, column_name, old_value, new_value):
+    """
+    Replace old values with new values in a specified column of a Pandas DataFrame.
+
+    Parameters:
+        df (pd.DataFrame): The input Pandas DataFrame.
+        column_name (str): The name of the column to perform the replacement in.
+        old_value (str): The old value to be replaced in the specified column.
+        new_value (str): The new value to replace the old value with.
+
+    Returns:
+        pd.DataFrame: A new Pandas DataFrame with the specified replacements.
+    """
+    df[column_name] = df[column_name].str.replace(old_value, new_value)
+    
+    return df
+
+def read_csv_pl(file_path, separator = ','):
     """
     Read a CSV file into a Polars DataFrame with specified data types.
 
@@ -48,7 +65,33 @@ def read_csv(file_path, separator = ','):
     df = pl.read_csv(file_path, ignore_errors = True, dtypes = dtypes, separator = separator)
     return df
 
-def strip_column(df: pl.DataFrame, column_name: str) -> pl.DataFrame:
+def read_csv(file_path, separator=',', encoding='ISO-8859-1'):
+    """
+    Read a CSV file into a Pandas DataFrame with specified data types.
+
+    Parameters:
+        file_path (str): The path to the CSV file to be read.
+        separator (str, optional): The delimiter used in the CSV file (default is ',').
+        encoding (str, optional): The encoding of the CSV file (default is 'utf-8').
+        
+    Returns:
+        pd.DataFrame: A Pandas DataFrame containing the data from the CSV file with specified data types.
+    """
+    dtypes = {
+        'NumAto': float,
+        'AnguloMeiaPotenciaAntena': float,
+        'PotenciaTransmissorWatts': float,
+        'AlturaAntena': float,
+        'GanhoAntena': str,
+        'AnguloElevacao': float,
+        'Azimute': float,
+        'FrenteCostaAntena': float
+    }
+
+    df = pd.read_csv(file_path, dtype=dtypes, sep=separator, encoding = encoding, on_bad_lines='skip')
+    return df
+
+def strip_column_pl(df: pl.DataFrame, column_name: str) -> pl.DataFrame:
     """
     Strip whitespace from a specified column in a Polars DataFrame.
 
@@ -66,6 +109,20 @@ def strip_column(df: pl.DataFrame, column_name: str) -> pl.DataFrame:
 
     df = df.with_columns(s.alias(column_name))
 
+    return df
+
+def strip_column(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
+    """
+    Strip whitespace from a specified column in a Pandas DataFrame.
+
+    Parameters:
+    - df: Pandas DataFrame
+    - column_name: Name of the column to be cleaned and stripped
+
+    Returns:
+    - Stripped Pandas DataFrame
+    """
+    df[column_name] = df[column_name].apply(lambda x: x.strip() if isinstance(x, str) else x)
     return df
 
 def concatenate_columns(row, first_column, second_column):
