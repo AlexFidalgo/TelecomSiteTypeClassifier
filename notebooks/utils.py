@@ -92,3 +92,43 @@ def concatenate_columns(row, first_column, second_column):
     else:
         return None
 
+def filter_columns(df):
+    """
+    Filter and select a subset of columns from the given DataFrame.
+
+    Parameters:
+    - df (pd.DataFrame): The input DataFrame containing the columns.
+
+    Returns:
+    pd.DataFrame: A new DataFrame containing only the selected columns
+    """
+
+    df = df[[
+    'NomeEntidade',
+    'SiglaUf',
+    'CodMunicipio',
+    'DesignacaoEmissao',
+    'Tecnologia', 
+    'tipoTecnologia',
+    'FreqTxMHz',
+    'FreqRxMHz',
+    'CodTipoClasseEstacao',
+    'ClassInfraFisica',
+    'CompartilhamentoInfraFisica',
+    'CodTipoAntena',
+    'GanhoAntena',
+    'FrenteCostaAntena',
+    'AnguloMeiaPotenciaAntena',
+    'AnguloElevacao',
+    'Polarizacao',
+    'AlturaAntena',
+    'CodEquipamentoTransmissor',
+    'PotenciaTransmissorWatts',
+    'CodDebitoTFI',
+    'DataLicenciamento',
+    'DataPrimeiroLicenciamento',
+    'DataValidade',
+    'NumFistelAssociado']]
+
+    return df
+ 
