@@ -1,11 +1,28 @@
 import unittest
 import polars as pl
-import utils
 import pandas as pd
+from utils import *
 
-class TestStripColumn(unittest.TestCase):
+class TestUtils(unittest.TestCase):
 
-    def test_strip_columns(self):
+    def test_replace_values(self):
+
+        data = {
+            'Column1': ['apple', 'banana', 'orange', 'apple', 'orange'],
+            'Column2': [1, 2, 3, 4, 5]
+        }
+        df = pd.DataFrame(data)
+
+        df_modified = replace_values(df, 'Column1', 'apple', 'fruit')
+
+        expected_df = pd.DataFrame({
+            'Column1': ['fruit', 'banana', 'orange', 'fruit', 'orange'],
+            'Column2': [1, 2, 3, 4, 5]
+        })
+
+        self.assertTrue(df.equals(expected_df))
+
+    def test_strip_columns_pl(self):
 
         data = {
             'col1': ['   apple  ', 'banana  ', '   cherry', None, 123],
@@ -14,7 +31,7 @@ class TestStripColumn(unittest.TestCase):
         }
         df = pl.DataFrame(data)
 
-        df = utils.strip_column(df, 'col1')
+        df = strip_column_pl(df, 'col1')
 
         expected_df = pl.DataFrame(
             data = {
@@ -28,6 +45,26 @@ class TestStripColumn(unittest.TestCase):
         expected_arrow = expected_df.to_arrow()
         self.assertTrue(df_arrow.equals(expected_arrow))
 
+    def test_strip_column(self):
+        data = {
+            'col1': ['   apple  ', 'banana  ', '   cherry', None, 123],
+            'col2': ['   dog', 'elephant', '   tiger  ', None, 'lion   '],
+            'col3': [1, 2, 3, 4, 5]
+        }
+        df = pd.DataFrame(data)
+
+        df = strip_column(df, 'col1')
+
+        expected_df = pd.DataFrame(
+            data={
+                'col1': ['apple', 'banana', 'cherry', None, 123],
+                'col2': ['   dog', 'elephant', '   tiger  ', None, 'lion   '],
+                'col3': [1, 2, 3, 4, 5]
+            }
+        )
+
+        self.assertTrue(df.equals(expected_df))
+
     def test_concatenate_columns(self):
         data = {
             'Tecnologia': ['apple', 'banana', 'cherry', None, '123', 'ab', None],
@@ -35,7 +72,7 @@ class TestStripColumn(unittest.TestCase):
         }
         df = pd.DataFrame(data)
 
-        df['tech'] = df.apply(lambda row: utils.concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
+        df['tech'] = df.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
 
         expected_df = pd.DataFrame(
             data={
