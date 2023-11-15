@@ -12,3 +12,29 @@ transform_data.py necessary actions:
         - numfistel
         - meio de acesso
     
+Handling dates in machine learning models requires some preprocessing steps to extract meaningful features from the date columns. Here are some common techniques you can consider:
+Extract Date Components:
+Break down the date into its components such as year, month, and day. This allows the model to understand the temporal aspect of the data more effectively.
+
+handle missing values
+scale/normalize
+encode
+
+One-Hot Encoding:
+    This technique is used for nominal (unordered) categorical data.
+    It creates binary columns for each category and represents the presence of a category with a 1 and the 
+    absence with a 0.
+    Each category is essentially "one-hot," meaning it is represented by a single bit.
+    # Assuming 'Category' is a categorical column
+    df_encoded = pd.get_dummies(df, columns=['Category'], prefix='Category')
+    After applying one-hot encoding, you will have new binary columns representing each category.
+
+Label Encoding:
+    This technique is used for ordinal (ordered) categorical data.
+    It assigns a unique numerical label to each category, preserving the ordinal relationships between them.
+    from sklearn.preprocessing import LabelEncoder
+    le = LabelEncoder()
+    df['Category_LabelEncoded'] = le.fit_transform(df['Category'])
+    The drawback of label encoding is that the algorithm may interpret the encoded values as having some ordinal 
+    significance, which may not be the case. If the categorical variable doesn't have a clear ordinal 
+    relationship, one-hot encoding is often preferred.
