@@ -1,5 +1,5 @@
 import os
-import polars as pl
+import pandas as pd
 from utils import *
 
 # for state in states
@@ -8,12 +8,13 @@ file = 'AC.csv'
 file_path = os.path.join(csv_files_dir, file)
 df = read_csv(file_path, separator = ',')
 
-# removing whitespaces from edges of ClassInfraFisica
+# NomeEntidade -> operator
+
+
+# ClassInfraFisica 
 df = strip_column(df, 'ClassInfraFisica')
+df = replace_values(df, 'ClassInfraFisica', 'Greenfild', 'Greenfield')
 
-pdf = df.to_pandas()
+# Tecnologia, tipoTecnologia
 pdf['Technology'] = pdf.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
-
-
-
 
