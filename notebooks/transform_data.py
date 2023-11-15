@@ -11,3 +11,9 @@ df = read_csv(file_path, separator = ',')
 # removing whitespaces from edges of ClassInfraFisica
 df = strip_column(df, 'ClassInfraFisica')
 
+pdf = df.to_pandas()
+pdf['Technology'] = pdf.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
+
+
+
+
