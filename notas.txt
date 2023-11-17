@@ -1,17 +1,3 @@
-Considere quebrar designação emissão em mais colunas. Mas terá de fazer isso antes de agregar
-(criar o dfg)
-
-
-transform_data.py necessary actions: 
-    - fazer unittest do strip
-    - transformar designação emissão em coluna(s) mais informativas
-        - ao invés de ter listas de atributos, criar colunas novas indicando tem_tal_atributo ou
-        quantidade_de_vezes_que_tem_tal_atributo
-    - dropar colunas irrelevantes dfg = dfg.drop(['Status.state', 'NumFistel', ...], axis=1)
-        - status
-        - numfistel
-        - meio de acesso
-    
 Handling dates in machine learning models requires some preprocessing steps to extract meaningful features from the date columns. Here are some common techniques you can consider:
 Extract Date Components:
 Break down the date into its components such as year, month, and day. This allows the model to understand the temporal aspect of the data more effectively.
