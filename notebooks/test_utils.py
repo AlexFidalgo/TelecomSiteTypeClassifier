@@ -86,5 +86,19 @@ class TestUtils(unittest.TestCase):
 
         self.assertTrue(df.equals(expected_df))
 
+    def test_process_designacao_emissao(self):
+
+        data = {'DesignacaoEmissao': ['8K30F1D', '7K60F1E 7K60F1W', '7K60F1E 7K61F1W', None]}
+        pdf = pd.DataFrame(data)
+
+        result = pdf.apply(process_designacao_emissao, axis=1)
+
+        expected_output = pd.DataFrame({
+            'LarguraFaixaNecessaria': [{'8K30'}, {'7K60'}, {'7K60', '7K61'}, None],
+            'CaracteristicasBasicas': [['F1D'], ['F1E', 'F1W'], ['F1E', 'F1W'], None]
+        })
+
+        pd.testing.assert_frame_equal(result, expected_output)
+
 if __name__ == "__main__":
     unittest.main()
