@@ -161,7 +161,6 @@ def filter_columns(df):
     """
 
     df = df[[
-    'NomeEntidade',
     'SiglaUf',
     'CodMunicipio',
     'DesignacaoEmissao',
@@ -189,3 +188,28 @@ def filter_columns(df):
 
     return df
  
+def process_designacao_emissao(row):
+    """
+    Process the 'DesignacaoEmissao' column in a DataFrame row.
+
+    Parameters:
+    - row (pd.Series): A row of a DataFrame.
+
+    Returns:
+    pd.Series: A Series containing two columns:
+        - 'LarguraFaixaNecessaria': Set of the first 4 characters of each string separated by whitespaces.
+        - 'CaracteristicasBasicas': List of the three characters after the first 4 in each string.
+
+    If the 'DesignacaoEmissao' value is None, both new columns will be set to None.
+    """
+    
+    if pd.isnull(row['DesignacaoEmissao']):
+        return pd.Series({'LarguraFaixaNecessaria': None, 'CaracteristicasBasicas': None})
+
+    parts = row['DesignacaoEmissao'].split()
+
+    largura_faixa_necessaria = set(part[:4] for part in parts)
+
+    caracteristicas_basicas = [part[4:7] for part in parts]
+
+    return pd.Series({'LarguraFaixaNecessaria': largura_faixa_necessaria, 'CaracteristicasBasicas': caracteristicas_basicas})
