@@ -1,5 +1,6 @@
 import pandas as pd
 import polars as pl
+from datetime import datetime
 
 def replace_values_pl(df, column_name, old_value, new_value):
     """
@@ -202,7 +203,7 @@ def process_designacao_emissao(row):
 
     If the 'DesignacaoEmissao' value is None, both new columns will be set to None.
     """
-    
+
     if pd.isnull(row['DesignacaoEmissao']):
         return pd.Series({'LarguraFaixaNecessaria': None, 'CaracteristicasBasicas': None})
 
@@ -213,3 +214,21 @@ def process_designacao_emissao(row):
     caracteristicas_basicas = [part[4:7] for part in parts]
 
     return pd.Series({'LarguraFaixaNecessaria': largura_faixa_necessaria, 'CaracteristicasBasicas': caracteristicas_basicas})
+
+def process_data(row, date_column):
+    """
+    Process a DataFrame row to calculate the age since a specified date.
+
+    Parameters:
+    - row (pandas.Series): A row of a DataFrame.
+    - date_column (str): The name of the column containing date information.
+
+    Returns:
+    - int or None: The age in days since the specified date if available, else None.
+    """
+
+    date_value = pd.to_datetime(row[date_column], errors='coerce')
+    
+    idade_licenciamento = (pd.to_datetime('today') - date_value).days if pd.notna(date_value) else None
+    
+    return idade_licenciamento

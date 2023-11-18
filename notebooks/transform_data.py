@@ -29,19 +29,27 @@ df['CodTipoAntena'] = df['CodTipoAntena'].fillna(0).astype(int)
 df['CodTipoAntena'] = df['CodTipoAntena'].astype(str)
 
 # GanhoAntena
-pdf['GanhoAntena'] = pd.to_numeric(pdf['GanhoAntena'], errors='coerce')
+df['GanhoAntena'] = pd.to_numeric(df['GanhoAntena'], errors='coerce')
 
 # FrenteCostaAntena
-pdf['FrenteCostaAntena'] = pd.to_numeric(pdf['FrenteCostaAntena'], errors='coerce')
+df['FrenteCostaAntena'] = pd.to_numeric(df['FrenteCostaAntena'], errors='coerce')
 
 # AnguloMeiaPotenciaAntena
-pdf['AnguloMeiaPotenciaAntena'] = pd.to_numeric(pdf['AnguloMeiaPotenciaAntena'], errors='coerce')
+df['AnguloMeiaPotenciaAntena'] = pd.to_numeric(df['AnguloMeiaPotenciaAntena'], errors='coerce')
 
 # AnguloElevacao
-pdf['AnguloElevacao'] = pd.to_numeric(pdf['AnguloElevacao'], errors='coerce')
+df['AnguloElevacao'] = pd.to_numeric(df['AnguloElevacao'], errors='coerce')
 
 # Polarizacao
-pdf['Polarizacao'] = pdf['Polarizacao'].str.upper()
+df['Polarizacao'] = df['Polarizacao'].str.upper()
 
 # AlturaAntena
-pdf['AlturaAntena'] = pd.to_numeric(pdf['AlturaAntena'], errors='coerce')
+df['AlturaAntena'] = pd.to_numeric(df['AlturaAntena'], errors='coerce')
+
+# DataLicenciamento
+df['IdadeLicenciamento'] = df.apply(process_data, date_column='DataLicenciamento', axis=1)
+df.drop(columns=['DataLicenciamento'], inplace=True)
+
+#DataPrimeiroLicenciamento
+df['IdadePrimeiroLicenciamento'] = df.apply(process_data, date_column='DataPrimeiroLicenciamento', axis=1)
+df.drop(columns=['DataLicenciamento'], inplace=True)
