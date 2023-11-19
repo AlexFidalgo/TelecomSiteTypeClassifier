@@ -5,14 +5,25 @@ import pandas as pd
 from utils import *
 from tqdm import tqdm
 
-csv_files_directory = '../data/csv_files'
+csv_files_directory = './data/csv_files'
 states = extract_first_two_characters(csv_files_directory)
 
-cleaned_directory_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'cleaned_csv_files')
+script_path = os.path.realpath(__file__) # path to the current script
+script_directory = os.path.dirname(script_path) # directory of the script
+script_directory_parent = os.path.dirname(script_directory) # parent of the directory of the script
+
+cleaned_directory_path = os.path.join(script_directory_parent, 'data', 'cleaned_csv_files')
 if not os.path.exists(cleaned_directory_path):
     os.makedirs(cleaned_directory_path)
 
 for state in tqdm(states):
+
+    print(f"\n{state}")
+
+    file = f'{state}.csv'
+    file_path = os.path.join(csv_files_directory, file)
+    polars_df = read_csv_pl(file_path, separator = ',')
+    df = polars_df.to_pandas()
 
     # filters only relevant coluns
     df = filter_columns(df)
@@ -61,7 +72,7 @@ for state in tqdm(states):
 
     #DataPrimeiroLicenciamento
     df['DiasDesdePrimeiroLicenciamento'] = df.apply(process_data, date_column='DataPrimeiroLicenciamento', axis=1)
-    df.drop(columns=['DataLicenciamento'], inplace=True)
+    df.drop(columns=['DataPrimeiroLicenciamento'], inplace=True)
 
     #DataValidade
     df['DiasAteExpirar'] = df.apply(process_data, date_column='DataValidade', axis=1)
