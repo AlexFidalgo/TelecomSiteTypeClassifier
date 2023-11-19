@@ -2,11 +2,22 @@
 
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A project that predicts telecom site types (Greenfield, Streetlevel, Ran Sharing, Small Cell, COW, Picocell, Harmonized, Rooftop, Indoor, and Outdoor) based on all Brazilian telecom stations data from Anatel, using machine learning.
+A project that predicts telecom site types  based on all Brazilian telecom stations data from Anatel, using machine learning.
 
 ## Overview
 
-The Telecom Site Type Classifier project utilizes machine learning techniques to predict the type of telecom sites, including rooftops, greenfields, and others in Brazil. The goal is to automate the site type classification process based on relevant features found in the Anatel data.
+The Telecom Site Type Classifier project utilizes machine learning techniques to predict the type of telecom sites present in Brazil:
+- GREENFIELD     
+- ROOFTOP        
+- RAN SHARING     
+- STREETLEVEL      
+- INDOOR 
+- OUTDOOR           
+- HARMONIZADA         
+- SMALLCELL   
+- COW
+- FASTSITE
+The goal is to automate the site type classification process based on relevant features found in the Anatel data.
 
 ## Getting Started
 

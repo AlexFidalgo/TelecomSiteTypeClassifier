@@ -1,55 +1,70 @@
+# Cleans csv_files, filtering and processing columns to create cleaned_csv_files
+
 import os
 import pandas as pd
 from utils import *
+from tqdm import tqdm
 
-# for state in states
-csv_files_dir = '../data/csv_files'
-file = 'AC.csv'
-file_path = os.path.join(csv_files_dir, file)
-df = read_csv(file_path, separator = ',')
+csv_files_directory = '../data/csv_files'
+states = extract_first_two_characters(csv_files_directory)
 
-# CodMunicipio
-df['CodMunicipio'] = df['CodMunicipio'].fillna(0).astype(int)
+cleaned_directory_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'cleaned_csv_files')
+if not os.path.exists(cleaned_directory_path):
+    os.makedirs(cleaned_directory_path)
 
-# DesignacaoEmissao
-df[['LarguraFaixaNecessaria', 'CaracteristicasBasicas']] = df.apply(process_designacao_emissao, axis=1)
-df.drop(columns=['DesignacaoEmissao'], inplace=True)
+for state in tqdm(states):
 
-# Tecnologia, tipoTecnologia
-df['Tecnologia_e_Tipo'] = df.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
-df.drop(columns=['Tecnologia', 'tipoTecnologia'], inplace=True)
+    # filters only relevant coluns
+    df = filter_columns(df)
 
-# ClassInfraFisica 
-df = strip_column(df, 'ClassInfraFisica')
-df['ClassInfraFisica'] = df['ClassInfraFisica'].str.upper()
-df = replace_values(df, 'ClassInfraFisica', 'GREENFILD', 'GREENFIELD')
+    # CodMunicipio
+    df['CodMunicipio'] = df['CodMunicipio'].fillna(0).astype(int)
 
-# CodTipoAntena
-df['CodTipoAntena'] = df['CodTipoAntena'].fillna(0).astype(int)
-df['CodTipoAntena'] = df['CodTipoAntena'].astype(str)
+    # DesignacaoEmissao
+    df[['LarguraFaixaNecessaria', 'CaracteristicasBasicas']] = df.apply(process_designacao_emissao, axis=1)
+    df.drop(columns=['DesignacaoEmissao'], inplace=True)
 
-# GanhoAntena
-df['GanhoAntena'] = pd.to_numeric(df['GanhoAntena'], errors='coerce')
+    # Tecnologia, tipoTecnologia
+    df['Tecnologia_e_Tipo'] = df.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
+    df.drop(columns=['Tecnologia', 'tipoTecnologia'], inplace=True)
 
-# FrenteCostaAntena
-df['FrenteCostaAntena'] = pd.to_numeric(df['FrenteCostaAntena'], errors='coerce')
+    # ClassInfraFisica 
+    df = strip_column(df, 'ClassInfraFisica')
+    df['ClassInfraFisica'] = df['ClassInfraFisica'].str.upper()
+    df = replace_values(df, 'ClassInfraFisica', 'GREENFILD', 'GREENFIELD')
 
-# AnguloMeiaPotenciaAntena
-df['AnguloMeiaPotenciaAntena'] = pd.to_numeric(df['AnguloMeiaPotenciaAntena'], errors='coerce')
+    # CodTipoAntena
+    df['CodTipoAntena'] = df['CodTipoAntena'].fillna(0).astype(int)
+    df['CodTipoAntena'] = df['CodTipoAntena'].astype(str)
 
-# AnguloElevacao
-df['AnguloElevacao'] = pd.to_numeric(df['AnguloElevacao'], errors='coerce')
+    # GanhoAntena
+    df['GanhoAntena'] = pd.to_numeric(df['GanhoAntena'], errors='coerce')
 
-# Polarizacao
-df['Polarizacao'] = df['Polarizacao'].str.upper()
+    # FrenteCostaAntena
+    df['FrenteCostaAntena'] = pd.to_numeric(df['FrenteCostaAntena'], errors='coerce')
 
-# AlturaAntena
-df['AlturaAntena'] = pd.to_numeric(df['AlturaAntena'], errors='coerce')
+    # AnguloMeiaPotenciaAntena
+    df['AnguloMeiaPotenciaAntena'] = pd.to_numeric(df['AnguloMeiaPotenciaAntena'], errors='coerce')
 
-# DataLicenciamento
-df['IdadeLicenciamento'] = df.apply(process_data, date_column='DataLicenciamento', axis=1)
-df.drop(columns=['DataLicenciamento'], inplace=True)
+    # AnguloElevacao
+    df['AnguloElevacao'] = pd.to_numeric(df['AnguloElevacao'], errors='coerce')
 
-#DataPrimeiroLicenciamento
-df['IdadePrimeiroLicenciamento'] = df.apply(process_data, date_column='DataPrimeiroLicenciamento', axis=1)
-df.drop(columns=['DataLicenciamento'], inplace=True)
+    # Polarizacao
+    df['Polarizacao'] = df['Polarizacao'].str.upper()
+
+    # AlturaAntena
+    df['AlturaAntena'] = pd.to_numeric(df['AlturaAntena'], errors='coerce')
+
+    # DataLicenciamento
+    df['DiasDesdeLicenciamento'] = df.apply(process_data, date_column='DataLicenciamento', axis=1)
+    df.drop(columns=['DataLicenciamento'], inplace=True)
+
+    #DataPrimeiroLicenciamento
+    df['DiasDesdePrimeiroLicenciamento'] = df.apply(process_data, date_column='DataPrimeiroLicenciamento', axis=1)
+    df.drop(columns=['DataLicenciamento'], inplace=True)
+
+    #DataValidade
+    df['DiasAteExpirar'] = df.apply(process_data, date_column='DataValidade', axis=1)
+
+    df.to_csv(os.path.join(cleaned_directory_path, f'{state}.csv'), index=False)
+

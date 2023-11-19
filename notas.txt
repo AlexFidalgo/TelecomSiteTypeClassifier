@@ -1,6 +1,4 @@
-Handling dates in machine learning models requires some preprocessing steps to extract meaningful features from the date columns. Here are some common techniques you can consider:
-Extract Date Components:
-Break down the date into its components such as year, month, and day. This allows the model to understand the temporal aspect of the data more effectively.
+main.py -> transform_data.py
 
 handle missing values
 scale/normalize
@@ -24,3 +22,4 @@ Label Encoding:
     The drawback of label encoding is that the algorithm may interpret the encoded values as having some ordinal 
     significance, which may not be the case. If the categorical variable doesn't have a clear ordinal 
     relationship, one-hot encoding is often preferred.
+

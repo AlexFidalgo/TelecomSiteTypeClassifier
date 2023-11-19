@@ -184,8 +184,7 @@ def filter_columns(df):
     'CodDebitoTFI',
     'DataLicenciamento',
     'DataPrimeiroLicenciamento',
-    'DataValidade',
-    'NumFistelAssociado']]
+    'DataValidade']]
 
     return df
  
@@ -229,6 +228,23 @@ def process_data(row, date_column):
 
     date_value = pd.to_datetime(row[date_column], errors='coerce')
     
-    idade_licenciamento = (pd.to_datetime('today') - date_value).days if pd.notna(date_value) else None
+    DiasDesde = (pd.to_datetime('today') - date_value).days if pd.notna(date_value) else None
     
-    return idade_licenciamento
+    return DiasDesde
+
+def extract_first_two_characters(directory_path):
+    """
+    Extracts the first two characters of each file name in the specified directory.
+
+    Parameters:
+    - directory_path (str): The path to the directory containing the files.
+
+    Returns:
+    - list of str: A list containing the first two characters of each file name.
+    """
+    
+    files = os.listdir(directory_path)
+    
+    first_two_characters = [file[:2] for file in files]
+    
+    return first_two_characters
