@@ -249,3 +249,24 @@ def extract_first_two_characters(directory_path):
     first_two_characters = [file[:2] for file in files]
     
     return first_two_characters
+
+def set_aggregation(x):
+    """
+    Aggregate a pandas Series or DataFrame column by either returning the
+    single unique element if all values are the same, or a set of unique
+    elements if there are multiple distinct values.
+
+    Parameters:
+    - x: pandas Series or DataFrame column
+        The input data to be aggregated.
+
+    Returns:
+    - Aggregated value:
+        If all values are the same, returns the single unique element.
+        If there are multiple distinct values, returns a set of unique elements.
+    """
+
+    if len(set(x)) == 1:
+        return x.iloc[0]  
+    else:
+        return set(x)
