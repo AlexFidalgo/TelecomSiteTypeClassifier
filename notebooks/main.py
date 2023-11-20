@@ -5,7 +5,7 @@ from merge_data import *
 from transform_data import *
 
 if __name__ == '__main__':
-    
+
     data_dir = './data'
     zip_files_dir = os.path.join(data_dir, 'zip_files')
     csv_files_dir = os.path.join(data_dir, 'csv_files')
@@ -23,3 +23,7 @@ if __name__ == '__main__':
 
     # Optionally, clear 'zip_files' directory after unzipping
     clear(zip_files_dir)
+
+    # Cleans csv_files, filtering and processing columns to create cleaned_csv_files
+    script_path = 'transform_data.py'
+    subprocess.run(['python', script_path])
