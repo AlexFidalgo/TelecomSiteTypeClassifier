@@ -1,5 +1,3 @@
-main.py -> transform_data.py
-
 handle missing values
 scale/normalize
 encode
