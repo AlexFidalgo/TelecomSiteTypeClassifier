@@ -163,6 +163,7 @@ def filter_columns(df):
     """
 
     df = df[[
+    'NumEstacao',
     'SiglaUf',
     'CodMunicipio',
     'DesignacaoEmissao',
