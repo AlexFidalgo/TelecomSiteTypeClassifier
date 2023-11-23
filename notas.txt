@@ -21,3 +21,9 @@ Label Encoding:
     significance, which may not be the case. If the categorical variable doesn't have a clear ordinal 
     relationship, one-hot encoding is often preferred.
 
+Porcentagem de estações sem class_infra_fisica
+PR: 93%
+AC: 85%
+SP: 96%
+
+Tem bastantes valores estranhos encontrados em várias coluns (ex. Tecnologia_e_tipo)
