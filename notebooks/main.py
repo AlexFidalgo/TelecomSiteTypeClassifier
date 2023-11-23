@@ -24,5 +24,6 @@ if __name__ == '__main__':
     # Optionally, clear 'zip_files' directory after unzipping
     clear(zip_files_dir)
 
+    # Cleans csv_files, filtering and processing columns to create cleaned_csv_files
     script_path = 'transform_data.py'
     subprocess.run(['python', script_path])
