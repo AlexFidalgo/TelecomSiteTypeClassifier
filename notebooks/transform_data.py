@@ -76,6 +76,7 @@ for state in tqdm(states):
 
     #DataValidade
     df['DiasAteExpirar'] = df.apply(process_data, date_column='DataValidade', axis=1)
+     df.drop(columns=['DataValidade'], inplace=True)
 
     df.to_csv(os.path.join(cleaned_directory_path, f'{state}.csv'), index=False)
 
