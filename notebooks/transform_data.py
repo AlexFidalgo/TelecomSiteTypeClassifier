@@ -5,8 +5,7 @@ import pandas as pd
 from utils import *
 from tqdm import tqdm
 
-csv_files_directory = './data/csv_files'
-states = extract_first_two_characters(csv_files_directory)
+states = extract_first_two_characters('data', 'csv_files')
 
 script_path = os.path.realpath(__file__) # path to the current script
 script_directory = os.path.dirname(script_path) # directory of the script
@@ -16,12 +15,13 @@ cleaned_directory_path = os.path.join(script_directory_parent, 'data', 'cleaned_
 if not os.path.exists(cleaned_directory_path):
     os.makedirs(cleaned_directory_path)
 
-for state in tqdm(states):
+states = ['AC']
 
+for state in tqdm(states):
     print(f"\n{state}")
 
     file = f'{state}.csv'
-    file_path = os.path.join(csv_files_directory, file)
+    file_path = os.path.join(script_directory_parent, 'data', 'csv_files', file)
     polars_df = read_csv_pl(file_path, separator = ',')
     df = polars_df.to_pandas()
 

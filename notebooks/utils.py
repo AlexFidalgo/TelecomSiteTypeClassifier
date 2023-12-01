@@ -288,7 +288,7 @@ def process_data(row, date_column):
     
     return DiasDesde
 
-def extract_first_two_characters(directory_path):
+def extract_first_two_characters(direc_name1, direc_name2):
     """
     Extracts the first two characters of each file name in the specified directory.
 
@@ -298,6 +298,8 @@ def extract_first_two_characters(directory_path):
     Returns:
     - list of str: A list containing the first two characters of each file name.
     """
+
+    directory_path = os.path.join(os.path.dirname(__file__), os.pardir, direc_name1, direc_name2)
     
     files = os.listdir(directory_path)
     
