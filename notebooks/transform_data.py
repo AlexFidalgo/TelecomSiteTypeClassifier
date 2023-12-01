@@ -33,6 +33,7 @@ for state in tqdm(states):
 
     # DesignacaoEmissao
     df[['LarguraFaixaNecessaria', 'CaracteristicasBasicas']] = df.apply(process_designacao_emissao, axis=1)
+    df['LarguraFaixaNecessaria'].apply(convert_bandwidth)
     df.drop(columns=['DesignacaoEmissao'], inplace=True)
 
     # Tecnologia, tipoTecnologia
@@ -76,7 +77,17 @@ for state in tqdm(states):
 
     #DataValidade
     df['DiasAteExpirar'] = df.apply(process_data, date_column='DataValidade', axis=1)
-     df.drop(columns=['DataValidade'], inplace=True)
+    df.drop(columns=['DataValidade'], inplace=True)
+
+    # Converting object type to appropriate type
+    df['SiglaUf'] = df['SiglaUf'].astype(str)
+    df['CodTipoClasseEstacao'] = df['CodTipoClasseEstacao'].astype(str)
+    df['ClassInfraFisica'] = df['ClassInfraFisica'].astype(str)
+    df['CompartilhamentoInfraFisica'].astype(str)
+    df['CompartilhamentoInfraFisica'] = df['GanhoAntena'].astype(float)
+    df['Polarizacao'] = df['Polarizacao'].astype(str)
+    df['CodDebitoTFI'] = df['CodDebitoTFI'].astype(str)
+    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].astype(str)
 
     df.to_csv(os.path.join(cleaned_directory_path, f'{state}.csv'), index=False)
 

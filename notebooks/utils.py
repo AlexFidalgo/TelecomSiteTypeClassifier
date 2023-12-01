@@ -1,4 +1,5 @@
 import os
+import re
 import pandas as pd
 import polars as pl
 from datetime import datetime
@@ -189,6 +190,54 @@ def filter_columns(df):
     'DataValidade']]
 
     return df
+
+def convert_bandwidth(value):
+    """
+    Convert bandwidth values from a specific format to numeric values.
+
+    Parameters:
+    - value (str): The input string representing bandwidth in a specific format.
+
+    Returns:
+    - int or None: The converted numeric bandwidth value or None if the input format is invalid.
+
+    The input string should follow the format where the numeric part represents
+    the three most significant digits of the bandwidth, and a letter represents the
+    unit of bandwidth (H for Hertz, K for Kilohertz, M for Megahertz, G for Gigahertz).
+    The optional decimal part is also supported.
+
+    Examples:
+    - convert_bandwidth('16K0') returns 16000
+    - convert_bandwidth('5M00') returns 5000000
+    - convert_bandwidth('40M0') returns 40000000
+    - convert_bandwidth('2M14') returns 2140000
+    - convert_bandwidth('27M5') returns 27500000
+    - convert_bandwidth('2M50') returns 2500000
+    - convert_bandwidth('invalid_format') returns None
+    """
+    match = re.match(r'(\d+)([HKMG])?(\d+)?', value)
+    if match:
+        number_part = int(match.group(1))
+        unit_part = match.group(2)
+        decimal_part = match.group(3)
+
+        if unit_part == 'H':
+            multiplier = 1
+        elif unit_part == 'K':
+            multiplier = 1e3
+        elif unit_part == 'M':
+            multiplier = 1e6
+        elif unit_part == 'G':
+            multiplier = 1e9
+        else:
+            multiplier = 1
+
+        if decimal_part is not None:
+            number_part = float(f"{number_part}.{decimal_part}")
+
+        return int(number_part * multiplier)
+    else:
+        return None
  
 def process_designacao_emissao(row):
     """
@@ -199,8 +248,8 @@ def process_designacao_emissao(row):
 
     Returns:
     pd.Series: A Series containing two columns:
-        - 'LarguraFaixaNecessaria': Set of the first 4 characters of each string separated by whitespaces.
-        - 'CaracteristicasBasicas': List of the three characters after the first 4 in each string.
+        - 'LarguraFaixaNecessaria': The 4 characters after the first comma if the value is a set; otherwise, the first 4 characters of the first string separated by whitespaces.
+        - 'CaracteristicasBasicas': The three characters after the first 4 in the first string if the value is a set; otherwise, the three characters after the first 4 in the first string.
 
     If the 'DesignacaoEmissao' value is None, both new columns will be set to None.
     """
@@ -210,9 +259,14 @@ def process_designacao_emissao(row):
 
     parts = row['DesignacaoEmissao'].split()
 
-    largura_faixa_necessaria = set(part[:4] for part in parts)
+    if len(parts) > 1 and row['DesignacaoEmissao'].startswith('{') and row['DesignacaoEmissao'].endswith('}'):
+        value_inside_set =parts[0][2:-2]
+    else:
+        value_inside_set = parts[0]
 
-    caracteristicas_basicas = [part[4:7] for part in parts]
+    largura_faixa_necessaria = value_inside_set[:4]
+
+    caracteristicas_basicas = value_inside_set[4:7]
 
     return pd.Series({'LarguraFaixaNecessaria': largura_faixa_necessaria, 'CaracteristicasBasicas': caracteristicas_basicas})
 
