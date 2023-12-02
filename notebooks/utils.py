@@ -182,7 +182,6 @@ def filter_columns(df):
     'AnguloElevacao',
     'Polarizacao',
     'AlturaAntena',
-    'CodEquipamentoTransmissor',
     'PotenciaTransmissorWatts',
     'CodDebitoTFI',
     'DataLicenciamento',
@@ -327,3 +326,34 @@ def set_aggregation(x):
         return x.iloc[0]  
     else:
         return set(x)
+
+def create_column_from_existing_column(df, new_column_name, eval_column_name, value):
+    """
+    Create a new Boolean column in a DataFrame based on the values of an existing column.
+
+    Parameters:
+    - df (pandas.DataFrame): The DataFrame to modify.
+    - new_column_name (str): The name of the new Boolean column to create.
+    - eval_column_name (str): The name of the column to evaluate for the condition.
+    - value (str): The name of the column whose values will be used for evaluation.
+
+    Returns:
+    None: The function modifies the input DataFrame in place by adding a new Boolean column.
+
+    """
+    df[new_column_name] = False
+    df.loc[df[eval_column_name] == value, new_column_name] = True
+
+def agg_non_none(series):
+    """
+    Aggregate a pandas Series by returning the first non-None value.
+
+    Parameters:
+    - series (pd.Series): The input pandas Series.
+
+    Returns:
+    - The first non-None value in the Series, or None if all values are None.
+    """
+    non_none_values = series.dropna().values
+    return non_none_values[0] if non_none_values.size > 0 else None
+
