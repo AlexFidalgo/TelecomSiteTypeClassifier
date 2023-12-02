@@ -51,7 +51,6 @@ AnguloMeiaPotenciaAntena ✓
 AnguloElevacao ✓
 Polarizacao ✓
 AlturaAntena ✓
-CodEquipamentoTransmissor ✓
 PotenciaTransmissorWatts ✓
 CodDebitoTFI ✓
 LarguraFaixaNecessaria ✓
