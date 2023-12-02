@@ -27,3 +27,7 @@ if __name__ == '__main__':
     # Cleans csv_files, filtering and processing columns to create cleaned_csv_files
     script_path = 'transform_data.py'
     subprocess.run(['python', script_path])
+
+    # Aggregates data
+    script_path = 'aggregate_data.py'
+    subprocess.run(['python', script_path])
