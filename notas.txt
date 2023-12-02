@@ -32,3 +32,33 @@ object (e depois construir o cleaned_csv_filesde novo)
 Tem bastantes valores estranhos encontrados em várias coluns (ex. Tecnologia_e_tipo)
 Cheque se os NaN e None values estão vindo como None mesmo ou como uma string ('NaN', 'None')
 DataValidade era pra ter sido dropada, mas não foi no transform_data
+
+
+**** Tratamento NaN
+
+NumEstacao ✓
+SiglaUf ✓
+CodMunicipio ✓
+FreqTxMHz ✓
+FreqRxMHz ✓
+CodTipoClasseEstacao ✓
+ClassInfraFisica ✓
+CompartilhamentoInfraFisica ✓
+CodTipoAntena ✓
+GanhoAntena ✓
+FrenteCostaAntena ✓
+AnguloMeiaPotenciaAntena ✓
+AnguloElevacao ✓
+Polarizacao ✓
+AlturaAntena ✓
+CodEquipamentoTransmissor ✓
+PotenciaTransmissorWatts ✓
+CodDebitoTFI ✓
+LarguraFaixaNecessaria ✓
+CaracteristicasBasicas ✓
+Tecnologia_e_Tipo ✓
+DiasDesdeLicenciamento
+DiasDesdePrimeiroLicenciamento 
+DiasAteExpirar
+
+fazer a verificação do groupby pra cada uma das colunas e tratar apropriadamente no transform_data. Depois rodar de novo pro 'BA' e ver se ficou bom
