@@ -15,7 +15,7 @@ cleaned_directory_path = os.path.join(script_directory_parent, 'data', 'cleaned_
 if not os.path.exists(cleaned_directory_path):
     os.makedirs(cleaned_directory_path)
 
-states = ['AC']
+states = ['BA']
 
 for state in tqdm(states):
     print(f"\n{state}")
@@ -84,10 +84,16 @@ for state in tqdm(states):
     df['CodTipoClasseEstacao'] = df['CodTipoClasseEstacao'].astype(str)
     df['ClassInfraFisica'] = df['ClassInfraFisica'].astype(str)
     df['CompartilhamentoInfraFisica'].astype(str)
-    df['CompartilhamentoInfraFisica'] = df['GanhoAntena'].astype(float)
+    df['GanhoAntena'] = df['GanhoAntena'].astype(float)
     df['Polarizacao'] = df['Polarizacao'].astype(str)
     df['CodDebitoTFI'] = df['CodDebitoTFI'].astype(str)
     df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].astype(str)
+
+    # NaN treatment
+    df['FreqTxMHz'] = df['FreqTxMHz'].astype(float)
+    df['FreqRxMHz'] = df['FreqRxMHz'].astype(float)
+    df['ClassInfraFisica'] = df['ClassInfraFisica'].replace('None', None)
+    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].replace('None', None)
 
     df.to_csv(os.path.join(cleaned_directory_path, f'{state}.csv'), index=False)
 
