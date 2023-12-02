@@ -15,8 +15,6 @@ cleaned_directory_path = os.path.join(script_directory_parent, 'data', 'cleaned_
 if not os.path.exists(cleaned_directory_path):
     os.makedirs(cleaned_directory_path)
 
-states = ['BA']
-
 for state in tqdm(states):
     print(f"\n{state}")
 
@@ -33,17 +31,33 @@ for state in tqdm(states):
 
     # DesignacaoEmissao
     df[['LarguraFaixaNecessaria', 'CaracteristicasBasicas']] = df.apply(process_designacao_emissao, axis=1)
-    df['LarguraFaixaNecessaria'].apply(convert_bandwidth)
+    df['LarguraFaixaNecessaria'] = df['LarguraFaixaNecessaria'].apply(convert_bandwidth)
     df.drop(columns=['DesignacaoEmissao'], inplace=True)
 
     # Tecnologia, tipoTecnologia
     df['Tecnologia_e_Tipo'] = df.apply(lambda row: concatenate_columns(row, 'Tecnologia', 'tipoTecnologia'), axis=1)
     df.drop(columns=['Tecnologia', 'tipoTecnologia'], inplace=True)
+    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].astype(str)
+    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].replace('None', None)
+    df = replace_values(df, 'Tecnologia_e_Tipo', 'NSA', 'NR_NSA')
+    df = replace_values(df, 'Tecnologia_e_Tipo', 'NR', 'NR_SA-NSA')
+    create_column_from_existing_column(df, 'LTE', 'Tecnologia_e_Tipo', 'LTE')
+    create_column_from_existing_column(df, 'WCDMA', 'Tecnologia_e_Tipo', 'WCDMA')
+    create_column_from_existing_column(df, 'GSM', 'Tecnologia_e_Tipo', 'GSM')
+    create_column_from_existing_column(df, 'WCDMA', 'Tecnologia_e_Tipo', 'WCDMA')
+    create_column_from_existing_column(df, 'NR_NSA', 'Tecnologia_e_Tipo', 'NR_NSA')
+    create_column_from_existing_column(df, 'NR_SA-NSA', 'Tecnologia_e_Tipo', 'NR_SA-NSA')
+    create_column_from_existing_column(df, 'DMR', 'Tecnologia_e_Tipo', 'DMR')
+    create_column_from_existing_column(df, 'Digital', 'Tecnologia_e_Tipo', 'digital')
+    df.drop(columns=['Tecnologia_e_Tipo'], inplace = True)
 
     # ClassInfraFisica 
     df = strip_column(df, 'ClassInfraFisica')
     df['ClassInfraFisica'] = df['ClassInfraFisica'].str.upper()
     df = replace_values(df, 'ClassInfraFisica', 'GREENFILD', 'GREENFIELD')
+
+    # CompartilhamentoInfraFisica
+    df['CompartilhamentoInfraFisica'] = df['CompartilhamentoInfraFisica'].str.upper()
 
     # CodTipoAntena
     df['CodTipoAntena'] = df['CodTipoAntena'].fillna(0).astype(int)
@@ -82,18 +96,13 @@ for state in tqdm(states):
     # Converting object type to appropriate type
     df['SiglaUf'] = df['SiglaUf'].astype(str)
     df['CodTipoClasseEstacao'] = df['CodTipoClasseEstacao'].astype(str)
-    df['ClassInfraFisica'] = df['ClassInfraFisica'].astype(str)
-    df['CompartilhamentoInfraFisica'].astype(str)
     df['GanhoAntena'] = df['GanhoAntena'].astype(float)
     df['Polarizacao'] = df['Polarizacao'].astype(str)
     df['CodDebitoTFI'] = df['CodDebitoTFI'].astype(str)
-    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].astype(str)
 
     # NaN treatment
     df['FreqTxMHz'] = df['FreqTxMHz'].astype(float)
     df['FreqRxMHz'] = df['FreqRxMHz'].astype(float)
-    df['ClassInfraFisica'] = df['ClassInfraFisica'].replace('None', None)
-    df['Tecnologia_e_Tipo'] = df['Tecnologia_e_Tipo'].replace('None', None)
 
     df.to_csv(os.path.join(cleaned_directory_path, f'{state}.csv'), index=False)
 
