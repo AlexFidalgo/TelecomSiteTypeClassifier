@@ -214,6 +214,9 @@ def convert_bandwidth(value):
     - convert_bandwidth('2M50') returns 2500000
     - convert_bandwidth('invalid_format') returns None
     """
+    if value is None:
+        return None
+
     match = re.match(r'(\d+)([HKMG])?(\d+)?', value)
     if match:
         number_part = int(match.group(1))
