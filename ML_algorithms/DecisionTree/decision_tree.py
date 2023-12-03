@@ -20,4 +20,6 @@ df = df.dropna()
 anatel = pd.get_dummies(anatel, columns=['Polarization'], prefix='Polarization')
 anatel = pd.get_dummies(anatel, columns=['BasicFeatures'], prefix='BasicFeatures')
 
+# Station as the index
+df['Station'] = df['Station'].astype(int)
 anatel.set_index('Station', inplace=True)
