@@ -26,38 +26,5 @@ PR: 93%
 AC: 85%
 SP: 96%
 
-Mudar o transform data pra fazer as transformações que voce tá vendo que são necessárias no Checking columns whose type is 
-object (e depois construir o cleaned_csv_filesde novo)
-
-Tem bastantes valores estranhos encontrados em várias coluns (ex. Tecnologia_e_tipo)
-Cheque se os NaN e None values estão vindo como None mesmo ou como uma string ('NaN', 'None')
-DataValidade era pra ter sido dropada, mas não foi no transform_data
-
-
-**** Tratamento NaN
-
-NumEstacao ✓
-SiglaUf ✓
-CodMunicipio ✓
-FreqTxMHz ✓
-FreqRxMHz ✓
-CodTipoClasseEstacao ✓
-ClassInfraFisica ✓
-CompartilhamentoInfraFisica ✓
-CodTipoAntena ✓
-GanhoAntena ✓
-FrenteCostaAntena ✓
-AnguloMeiaPotenciaAntena ✓
-AnguloElevacao ✓
-Polarizacao ✓
-AlturaAntena ✓
-PotenciaTransmissorWatts ✓
-CodDebitoTFI ✓
-LarguraFaixaNecessaria ✓
-CaracteristicasBasicas ✓
-Tecnologia_e_Tipo ✓
-DiasDesdeLicenciamento
-DiasDesdePrimeiroLicenciamento 
-DiasAteExpirar
-
-fazer a verificação do groupby pra cada uma das colunas e tratar apropriadamente no transform_data. Depois rodar de novo pro 'BA' e ver se ficou bom
+Anatel
+57328/917416 = 6% de estações com classificação pronta
