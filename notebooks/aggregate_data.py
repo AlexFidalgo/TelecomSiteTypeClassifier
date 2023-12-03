@@ -11,8 +11,7 @@ script_directory_parent = os.path.dirname(script_directory) # parent of the dire
 
 output_directory_path = os.path.join(script_directory_parent, 'data')
 
-
-df = pd.DataFrame()
+cons = pd.DataFrame()
 
 for state in tqdm(states):
     print(f"\n{state}")
@@ -54,8 +53,8 @@ for state in tqdm(states):
         'DiasAteExpirar': 'min'}
 
     g = df.groupby('NumEstacao').agg(aggregation_dict).reset_index()
-    g.columns = [' '.join(col).strip() for col in g.columns.values] # Flattens the multi-level column index
+    g.columns = [f"{col[0]}_{col[1]}" if isinstance(col, tuple) else col for col in g.columns]
 
-    df = pd.concat([df, g])
+    cons = pd.concat([cons, g])
 
-df.to_csv(os.path.join(output_directory_path, f'Anatel.csv'), index=False)
+cons.to_csv(os.path.join(output_directory_path, f'Anatel.csv'), index=False)
