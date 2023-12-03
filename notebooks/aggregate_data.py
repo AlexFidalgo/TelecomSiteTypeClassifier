@@ -57,4 +57,12 @@ for state in tqdm(states):
 
     cons = pd.concat([cons, g])
 
-cons.to_csv(os.path.join(output_directory_path, f'Anatel.csv'), index=False)
+cons.to_csv(os.path.join(output_directory_path, 'Anatel.csv'), index=False)
+
+lab = cons[cons['ClassInfraFisica_agg_non_none'].notna()]
+
+labeled_directory_path = os.path.join(script_directory_parent, 'data', 'labeled_csv_files')
+if not os.path.exists(labeled_directory_path):
+    os.makedirs(labeled_directory_path)
+
+lab.to_csv(os.path.join(labeled_directory_path, 'Anatel_labeled.csv'), index=False)
