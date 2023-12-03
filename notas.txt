@@ -1,9 +1,12 @@
 Anatel
 57328/917416 = 6% de estações com classificação pronta
 
+Transform NumEstacao into index
+
 1) handle missing values
 2) scale/normalize
 3) encode
+4) Balancing??
 
 One-Hot Encoding:
     This technique is used for nominal (unordered) categorical data.
@@ -25,4 +28,44 @@ Label Encoding:
     relationship, one-hot encoding is often preferred.
 
 
+Column 'NumEstacao_': float64
+Column 'SiglaUf_max': object
+Column 'CodMunicipio_max': int64
+Column 'FreqTxMHz_min': float64
+Column 'FreqTxMHz_max': float64
+Column 'FreqRxMHz_min': float64
+Column 'FreqRxMHz_max': float64
+Column 'CodTipoClasseEstacao_max': object
+Column 'ClassInfraFisica_agg_non_none': object
+Column 'CodTipoAntena_max': int64
+Column 'GanhoAntena_agg_non_none': float64
+Column 'FrenteCostaAntena_max': float64
+Column 'AnguloMeiaPotenciaAntena_max': float64
+Column 'AnguloElevacao_min': float64
+Column 'Polarizacao_max': object
+Column 'AlturaAntena_max': float64
+Column 'PotenciaTransmissorWatts_max': float64
+Column 'CodDebitoTFI_max': object
+Column 'LarguraFaixaNecessaria_max': float64
+Column 'CaracteristicasBasicas_agg_non_none': object
+Column 'LTE_max': bool
+Column 'WCDMA_max': bool
+Column 'GSM_max': bool
+Column 'NR_NSA_max': bool
+Column 'NR_SA-NSA_max': bool
+Column 'DMR_max': bool
+Column 'Digital_max': bool
+Column 'DiasDesdeLicenciamento_max': float64
+Column 'DiasDesdePrimeiroLicenciamento_max': float64
+Column 'DiasAteExpirar_min': int64
 
+GREENFIELD     44317
+ROOFTOP         8421
+RAN SHARING     1719
+INDOOR          1410
+STREETLEVEL      526
+SMALLCELL        444
+HARMONIZADA      188
+OUTDOOR          147
+COW              146
+FASTSITE          10
