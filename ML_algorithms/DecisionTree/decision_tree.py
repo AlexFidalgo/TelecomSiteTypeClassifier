@@ -14,3 +14,5 @@ get_rid_of_problematic_columns(anatel)
 # One-Hot Encoding
 anatel = pd.get_dummies(anatel, columns=['Polarizacao_max'], prefix='Polarizacao')
 anatel = pd.get_dummies(anatel, columns=['CaracteristicasBasicas_agg_non_none'], prefix='CaracteristicasBasicas')
+
+anatel.set_index('NumEstacao', inplace=True)
