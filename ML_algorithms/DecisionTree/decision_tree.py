@@ -11,8 +11,13 @@ anatel = pd.read_csv(anatel_file_path)
 
 get_rid_of_problematic_columns(anatel)
 
-# One-Hot Encoding
-anatel = pd.get_dummies(anatel, columns=['Polarizacao_max'], prefix='Polarizacao')
-anatel = pd.get_dummies(anatel, columns=['CaracteristicasBasicas_agg_non_none'], prefix='CaracteristicasBasicas')
+rename_anatel_cols(df)
 
-anatel.set_index('NumEstacao', inplace=True)
+# Treatment of Null values
+df = df.dropna()
+
+# One-Hot Encoding
+anatel = pd.get_dummies(anatel, columns=['Polarization'], prefix='Polarization')
+anatel = pd.get_dummies(anatel, columns=['BasicFeatures'], prefix='BasicFeatures')
+
+anatel.set_index('Station', inplace=True)
