@@ -1,6 +1,9 @@
-handle missing values
-scale/normalize
-encode
+Anatel
+57328/917416 = 6% de estações com classificação pronta
+
+1) handle missing values
+2) scale/normalize
+3) encode
 
 One-Hot Encoding:
     This technique is used for nominal (unordered) categorical data.
@@ -21,10 +24,5 @@ Label Encoding:
     significance, which may not be the case. If the categorical variable doesn't have a clear ordinal 
     relationship, one-hot encoding is often preferred.
 
-Porcentagem de estações sem class_infra_fisica
-PR: 93%
-AC: 85%
-SP: 96%
 
-Anatel
-57328/917416 = 6% de estações com classificação pronta
+
