@@ -8,56 +8,6 @@ Transform NumEstacao into index
 3) encode
 4) Balancing??
 
-One-Hot Encoding:
-    This technique is used for nominal (unordered) categorical data.
-    It creates binary columns for each category and represents the presence of a category with a 1 and the 
-    absence with a 0.
-    Each category is essentially "one-hot," meaning it is represented by a single bit.
-    # Assuming 'Category' is a categorical column
-    df_encoded = pd.get_dummies(df, columns=['Category'], prefix='Category')
-    After applying one-hot encoding, you will have new binary columns representing each category.
-
-Label Encoding:
-    This technique is used for ordinal (ordered) categorical data.
-    It assigns a unique numerical label to each category, preserving the ordinal relationships between them.
-    from sklearn.preprocessing import LabelEncoder
-    le = LabelEncoder()
-    df['Category_LabelEncoded'] = le.fit_transform(df['Category'])
-    The drawback of label encoding is that the algorithm may interpret the encoded values as having some ordinal 
-    significance, which may not be the case. If the categorical variable doesn't have a clear ordinal 
-    relationship, one-hot encoding is often preferred.
-
-
-Column 'NumEstacao_': float64
-Column 'SiglaUf_max': object
-Column 'CodMunicipio_max': int64
-Column 'FreqTxMHz_min': float64
-Column 'FreqTxMHz_max': float64
-Column 'FreqRxMHz_min': float64
-Column 'FreqRxMHz_max': float64
-Column 'CodTipoClasseEstacao_max': object
-Column 'ClassInfraFisica_agg_non_none': object
-Column 'CodTipoAntena_max': int64
-Column 'GanhoAntena_agg_non_none': float64
-Column 'FrenteCostaAntena_max': float64
-Column 'AnguloMeiaPotenciaAntena_max': float64
-Column 'AnguloElevacao_min': float64
-Column 'Polarizacao_max': object
-Column 'AlturaAntena_max': float64
-Column 'PotenciaTransmissorWatts_max': float64
-Column 'CodDebitoTFI_max': object
-Column 'LarguraFaixaNecessaria_max': float64
-Column 'CaracteristicasBasicas_agg_non_none': object
-Column 'LTE_max': bool
-Column 'WCDMA_max': bool
-Column 'GSM_max': bool
-Column 'NR_NSA_max': bool
-Column 'NR_SA-NSA_max': bool
-Column 'DMR_max': bool
-Column 'Digital_max': bool
-Column 'DiasDesdeLicenciamento_max': float64
-Column 'DiasDesdePrimeiroLicenciamento_max': float64
-Column 'DiasAteExpirar_min': int64
 
 GREENFIELD     44317
 ROOFTOP         8421
@@ -69,3 +19,7 @@ HARMONIZADA      188
 OUTDOOR          147
 COW              146
 FASTSITE          10
+
+Entender conceitos de decision tree
+Explorar calibração dos parâmetros
+Plotar gráficos
