@@ -291,6 +291,25 @@ We will employ supervised machine learning techniques, since we have labeled dat
 
 ### Decision Tree
 
+#### Encoding
+
+Decision trees work well with categorical variables, but they often require encoding. If it includes categorical features, techniques like one-hot encoding to convert them into a suitable format for the model are required.
+##### One-Hot Encoding:
+- This technique is used for nominal (unordered) categorical data.
+- It creates binary columns for each category and represents the presence of a category with a 1 and the absence with a 0.
+- Each category is essentially "one-hot," meaning it is represented by a single bit.
+- After applying one-hot encoding, you will have new binary columns representing each category.
+##### Label Encoding:
+- This technique is used for ordinal (ordered) categorical data.
+- It assigns a unique numerical label to each category, preserving the ordinal relationships between them.
+- The drawback of label encoding is that the algorithm may interpret the encoded values as having some ordinal significance, which may not be the case.
+- If the categorical variable doesn't have a clear ordinal relationship, one-hot encoding is often preferred.
+One-Hot Encoding will be applied:
+   ```shell
+      anatel = pd.get_dummies(anatel, columns=['Polarization'], prefix='Polarization')
+      anatel = pd.get_dummies(anatel, columns=['BasicFeatures'], prefix='BasicFeatures')
+   ```
+The remaining columns are not categorical.
 
 ## Author
 
