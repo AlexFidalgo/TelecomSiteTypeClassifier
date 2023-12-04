@@ -74,15 +74,19 @@ Anatel has a dataset containing information about all legal telecomunication sta
 
    3. **NomeEntidade**: Name of the company that owns the station.
 
-   4. **NumServico**: Code of the telecommunications service at Anatel.
+   4. **SiglaUf**: State code.
 
-   5. **NumAto**: Number of the Radiofrequency Authorization Act, with the last four digits referring to the year of the respective act's signature. e.g. XYZW2017, act XYZW of 2017.
+   5. **CodMunicipio**: Municipality code.
 
-   6. **EnderecoEstacao**: Complete address where the station is installed.
+   6. **NumServico**: Code of the telecommunications service at Anatel.
 
-   7. **EndComplemento**: Address complement, if applicable.
+   7. **NumAto**: Number of the Radiofrequency Authorization Act, with the last four digits referring to the year of the respective act's signature. e.g. XYZW2017, act XYZW of 2017.
 
-   8. **DesignacaoEmissao**: Based on [Método de Designação - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60403&assuntoPublicacao=null&caminhoRel=null&filtro=1&documentoPath=outros/autocadastramento/metodo_de_designacao.pdf). Emission designation. For a complete emission designation, we always need 9 alphanumeric characters. The first four represent the _necessary bandwidth_; the next three represent the _basic characteristics_, and the last two represent the _optional additional characteristics_.
+   8. **EnderecoEstacao**: Complete address where the station is installed.
+
+   9. **EndComplemento**: Address complement, if applicable.
+
+   10. **DesignacaoEmissao**: Based on [Método de Designação - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60403&assuntoPublicacao=null&caminhoRel=null&filtro=1&documentoPath=outros/autocadastramento/metodo_de_designacao.pdf). Emission designation. For a complete emission designation, we always need 9 alphanumeric characters. The first four represent the _necessary bandwidth_; the next three represent the _basic characteristics_, and the last two represent the _optional additional characteristics_.
       8a) **Necessary bandwidth** For a given emission class, the minimum value of the bandwidth occupied by the emission, sufficient to ensure the transmission of information at the required speed and quality for the employed system, under specified conditions. The necessary bandwidth will always be expressed by three digits, indicating the first three significant digits of the necessary bandwidth and a letter that occupies the position of the decimal point and represents the bandwidth unit, which will be H for Hertz, K for Kilohertz, M for Megahertz, or G for Gigahertz.
       8b) **Basic characteristics** described by three symbols:
          - First symbol: type of modulation.
@@ -90,52 +94,56 @@ Anatel has a dataset containing information about all legal telecomunication sta
          - Third symbol: type of information to be transmitted.
       8c) **Optional additional characteristics** or a more complete description of an emission, two optional characteristics are provided, which are expressed by the fourth and fifth symbols. When the fourth or fifth symbol is not used, it is advisable to indicate this with a dash where each symbol would appear.
 
-   9. **meioAcesso** Field of 'stations exempted from licensing.' The options are: fiber, metallic pair, coaxial cable, and restricted radiation.
+   11. **Tecnologia**: Technology, options are WCDMA (3G); GSM (2G); HSPA; EDGE; LTE (4G); NR(5G).
 
-   10. **Azimute** Positioning in degrees relative to the North of the main radiation lobe of the antenna. When an omnidirectional antenna is used, it will be 0.
+   12. **tipoTecnologia**: Whether standalone (SA) or non-standalone (NSA).
 
-   11. **CodTipoClasseEstacao** Station Class according to the list allowed in the Mosaic channelization system, according to the Regulation of the frequency range used according to the Technical Projects Manual of SITAR, available in [Manual de Projeto - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60402&assuntoPublicacao=MANUAL%20DE%20PROJETOS%20T%C9CNICOS%20(SITAR)&caminhoRel=CidadaoComunica%E7%E3o%20via%20R%E1dioServi%E7o%20Limitado&filtro=1&documentoPath=outros/). Examples:
-   - ML: Estação móvel terrestre
-   - FX: Estação fixa
-   - FB: Estação de base
-   - XR: Estação fixa repetidora
-   - FA: Estação aeronáutica
-   - RC: Radiofarol não direcional
+   13. **meioAcesso** Field of 'stations exempted from licensing.' The options are: fiber, metallic pair, coaxial cable, and restricted radiation.
 
-   12. **ClassInfraFisica** This is the target variable, represents the physical infrastructure classification. 
+   14. **Azimute** Positioning in degrees relative to the North of the main radiation lobe of the antenna. When an omnidirectional antenna is used, it will be 0.
 
-   13. **CompartilhamentoInfraFisica** Physical Infrastructure Sharing.
+   15. **CodTipoClasseEstacao** Station Class according to the list allowed in the Mosaic channelization system, according to the Regulation of the frequency range used according to the Technical Projects Manual of SITAR, available in [Manual de Projeto - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60402&assuntoPublicacao=MANUAL%20DE%20PROJETOS%20T%C9CNICOS%20(SITAR)&caminhoRel=CidadaoComunica%E7%E3o%20via%20R%E1dioServi%E7o%20Limitado&filtro=1&documentoPath=outros/). Examples:
+      - ML: Estação móvel terrestre
+      - FX: Estação fixa
+      - FB: Estação de base
+      - XR: Estação fixa repetidora
+      - FA: Estação aeronáutica
+      - RC: Radiofarol não direcional
 
-   14. **CodTipoAntena** Antenna Type: mandatory field, where the code is inserted according to item 2.3.4 of the [Manual de Projeto - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60402&assuntoPublicacao=MANUAL%20DE%20PROJETOS%20T%C9CNICOS%20(SITAR)&caminhoRel=CidadaoComunica%E7%E3o%20via%20R%E1dioServi%E7o%20Limitado&filtro=1&documentoPath=outros/). Examples:
-   - 019: Monopolo vertical
-   - 060: V invertido
-   - 213: Cabo fendido
+   16. **ClassInfraFisica** This is the target variable, represents the physical infrastructure classification. 
 
-   15. **GanhoAntena** Antenna Gain in dB. If the frequency is above 28,000 kHz, the antenna gain is reported in relation to an isotropic antenna (dbi); if lower, this is given in relation to a dipole antenna (dBd).
+   17. **CompartilhamentoInfraFisica** Physical Infrastructure Sharing.
 
-   16. **FrenteCostaAntena** Front/back ratio in dBi (mandatory field). It must be less than 90 dBi. It will be 0 (zero) when an omnidirectional antenna is used.
+   18. **CodTipoAntena** Antenna Type: mandatory field, where the code is inserted according to item 2.3.4 of the [Manual de Projeto - Anatel](https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=60402&assuntoPublicacao=MANUAL%20DE%20PROJETOS%20T%C9CNICOS%20(SITAR)&caminhoRel=CidadaoComunica%E7%E3o%20via%20R%E1dioServi%E7o%20Limitado&filtro=1&documentoPath=outros/). Examples:
+      - 019: Monopolo vertical
+      - 060: V invertido
+      - 213: Cabo fendido
 
-   17. **AnguloMeiaPotenciaAntena** Half-power angle in decimal degrees (mandatory field). Points on the diagram where the radiated power equals half that radiated in the main direction.
+   19. **GanhoAntena** Antenna Gain in dB. If the frequency is above 28,000 kHz, the antenna gain is reported in relation to an isotropic antenna (dbi); if lower, this is given in relation to a dipole antenna (dBd).
 
-   18. **AnguloElevacao** Mechanical elevation angle in decimal degrees. The value must be between 0 and 90 and be measured with respect to the horizon line, being negative when the line of sight is below this reference.
+   20. **FrenteCostaAntena** Front/back ratio in dBi (mandatory field). It must be less than 90 dBi. It will be 0 (zero) when an omnidirectional antenna is used.
 
-   19. **Polarizacao** The orientation of the electric field of the radio wave with respect to the earth or direction of propagation; and is determined by the physical structure of the antenna and its orientation. Accepted values: H (horizontal), V (vertical), CR (circular to the right), CL (circular to the left), and X (horizontal and vertical simultaneous or not).
+   21. **AnguloMeiaPotenciaAntena** Half-power angle in decimal degrees (mandatory field). Points on the diagram where the radiated power equals half that radiated in the main direction.
 
-   20. **AlturaAntena** Antenna height (relative to ground level). It must be less than 200 m.
+   22. **AnguloElevacao** Mechanical elevation angle in decimal degrees. The value must be between 0 and 90 and be measured with respect to the horizon line, being negative when the line of sight is below this reference.
 
-   21. **PotenciaTransmissorWatts** Nominal power (transmitter output) in watts.
+   23. **Polarizacao** The orientation of the electric field of the radio wave with respect to the earth or direction of propagation; and is determined by the physical structure of the antenna and its orientation. Accepted values: H (horizontal), V (vertical), CR (circular to the right), CL (circular to the left), and X (horizontal and vertical simultaneous or not).
 
-   22. **CodDebitoTFI** Code of the Installation Inspection Fee (TFI) according to Law No. 5,070, of July 7, 1966. The installation inspection fee is due by concessionaires and permittees of telecommunications services, at the time when they are granted authorization to perform the service and aims to reimburse the expenses incurred by the Public Power until the licensing of the respective stations. Stations of permittees and concessionaires of telecommunications services that do not make payment of the installation inspection fee will not be licensed ([Lei do Fistel](https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-5070-7-julho-1966-364619-anexo-pl.pdf)).
+   24. **AlturaAntena** Antenna height (relative to ground level). It must be less than 200 m.
 
-   23. **DataLicenciamento** Date of the station's last licensing. Format: YYYY/MM/DD.
+   26. **PotenciaTransmissorWatts** Nominal power (transmitter output) in watts.
 
-   24. **NumRede** Numeric value, defined by the user, to identify a group of communicating stations. Aims to facilitate the analysis of network communication.
+   27. **CodDebitoTFI** Code of the Installation Inspection Fee (TFI) according to Law No. 5,070, of July 7, 1966. The installation inspection fee is due by concessionaires and permittees of telecommunications services, at the time when they are granted authorization to perform the service and aims to reimburse the expenses incurred by the Public Power until the licensing of the respective stations. Stations of permittees and concessionaires of telecommunications services that do not make payment of the installation inspection fee will not be licensed ([Lei do Fistel](https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-5070-7-julho-1966-364619-anexo-pl.pdf)).
 
-   24. **_id** Identification of the emission/frequency of the station.
+   28. **DataLicenciamento** Date of the station's last licensing. Format: YYYY/MM/DD.
 
-   25. **DataValidade** Validity of the RF associated with that station.
+   29. **NumRede** Numeric value, defined by the user, to identify a group of communicating stations. Aims to facilitate the analysis of network communication.
 
-   26. **NumFistelAssociado** Field filled when the emission is from another Fistel (same CNPJ or different): joint licensing. In this case, the number of the Fistel responsible for the RF Act of this emission line is provided.
+   30. **_id** Identification of the emission/frequency of the station.
+
+   31. **DataValidade** Validity of the RF associated with that station.
+
+   32. **NumFistelAssociado** Field filled when the emission is from another Fistel (same CNPJ or different): joint licensing. In this case, the number of the Fistel responsible for the RF Act of this emission line is provided.
 
 The data must be downloaded from the website, which requires at least one filter to be active. The script `download.ps1` is a PowerShell script which filters the data by state and then downloads it, going through each one of all the Brazilian states. We get 27 different zip files, one for each state, which are saved to the `data/zip_files` folder.
 
@@ -146,7 +154,9 @@ Firstly, the data is unziped into the `data/csv_files` folder. Then `notebooks/m
    ### Data Processing
 
    #### DesignacaoEmissao
-   This column gives rise to two columns: _LarguraFaixaNecessaria_, which is converted to an integer representing the bandwidth occupied by the emission,and CaracteristicasBasicas.
+   This column gives rise to two columns: _LarguraFaixaNecessaria_, which is converted to an integer representing the bandwidth occupied by the emission,and _CaracteristicasBasicas_.
+
+   #### Tecnologia and tipoTecnologia
 
 
 
