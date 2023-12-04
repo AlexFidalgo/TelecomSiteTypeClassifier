@@ -11,10 +11,6 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
 
     anatel = pd.read_csv(anatel_file_path)
 
-    get_rid_of_problematic_columns(anatel)
-
-    rename_anatel_cols(anatel)
-
     # Treatment of Null values
     anatel = anatel.dropna()
 
