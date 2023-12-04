@@ -64,7 +64,7 @@ Método: dados, extração, tratamento, variáveis (dizer o tipo de cada uma), t
 
 Anatel has a dataset containing information about all legal telecomunication stations in Brazil, which can be found [here](https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php?view=licenciamento). Each row of the dataset represents a telecomunication transmitter, present in a station.
 
-   #### Columns
+### Columns
 
    From [Página de Emissões - Anatel](https://sistemas.anatel.gov.br/anexar-api/publico/anexos/download/9cfc11fc83fcfc2d2586cdb887f72cb5), we can understand what each column refers to.
 
@@ -137,13 +137,19 @@ Anatel has a dataset containing information about all legal telecomunication sta
 
    28. **DataLicenciamento** Date of the station's last licensing. Format: YYYY/MM/DD.
 
-   29. **NumRede** Numeric value, defined by the user, to identify a group of communicating stations. Aims to facilitate the analysis of network communication.
+   29. **DataPrimeiroLicenciamento** Date of the station's first licensing. Format: YYYY/MM/DD.
 
-   30. **_id** Identification of the emission/frequency of the station.
+   30. **NumRede** Numeric value, defined by the user, to identify a group of communicating stations. Aims to facilitate the analysis of network communication.
 
-   31. **DataValidade** Validity of the RF associated with that station.
+   31. **_id** Identification of the emission/frequency of the station.
 
-   32. **NumFistelAssociado** Field filled when the emission is from another Fistel (same CNPJ or different): joint licensing. In this case, the number of the Fistel responsible for the RF Act of this emission line is provided.
+   32. **DataValidade** Validity of the RF associated with that station.
+
+   33. **NumFistelAssociado** Field filled when the emission is from another Fistel (same CNPJ or different): joint licensing. In this case, the number of the Fistel responsible for the RF Act of this emission line is provided.
+
+   34. **FreqTxMHz** Transmission frequency perceived by the device.
+
+   35. **FreqRxMHz** Reception frequency perceived by the device.
 
 The data must be downloaded from the website, which requires at least one filter to be active. The script `download.ps1` is a PowerShell script which filters the data by state and then downloads it, going through each one of all the Brazilian states. We get 27 different zip files, one for each state, which are saved to the `data/zip_files` folder.
 
@@ -151,12 +157,100 @@ The `notebooks/main.py` script is a Python script which gathers all necessary st
 
 Firstly, the data is unziped into the `data/csv_files` folder. Then `notebooks/main.py` will cause the `notebooks/transform_data.py` script to run; it processes all columns and sends the results to `data/cleaned_csv_files`, resulting in 27 cleaned csv files (one for each state).
 
-   ### Data Processing
+### Data Processing
+
+   All columns except the ones below are henceforth disregarded:
+    - NumEstacao
+    - SiglaUf
+    - CodMunicipio
+    - DesignacaoEmissao
+    - Tecnologia 
+    - tipoTecnologia
+    - FreqTxMHz
+    - FreqRxMHz
+    - CodTipoClasseEstacao
+    - ClassInfraFisica
+    - CompartilhamentoInfraFisica
+    - CodTipoAntena
+    - GanhoAntena
+    - FrenteCostaAntena
+    - AnguloMeiaPotenciaAntena
+    - AnguloElevacao
+    - Polarizacao
+    - AlturaAntena
+    - PotenciaTransmissorWatts
+    - CodDebitoTFI
+    - DataLicenciamento
+    - DataPrimeiroLicenciamento
+    - DataValidade
 
    #### DesignacaoEmissao
    This column gives rise to two columns: _LarguraFaixaNecessaria_, which is converted to an integer representing the bandwidth occupied by the emission,and _CaracteristicasBasicas_.
 
    #### Tecnologia and tipoTecnologia
+   These columns will give rise to the following columns: 
+      - LTE
+      - WCDMA
+      - GSM
+      - NR_NSA
+      - NR_SA-NSA
+      - DMR
+      - Digital
+   which are bool values indicating if such technology is present for that row.
+
+   #### ClassInfraFisica
+   Some values in the column have typos, these are fixed.
+
+   #### CompartilhamentoInfraFisica
+   Converted to string.
+
+   #### GanhoAntena
+   Converted to float.
+
+   #### GanhoAntena
+   Converted to float.
+
+   #### FrenteCostaAntena
+   Converted to float.
+
+   #### AnguloMeiaPorenciaAntena
+   Converted to float.
+
+   #### AnguloElevacao
+   Converted to float.
+
+   #### Polarizacao
+   Converted to string.
+
+   #### AlturaAntena
+   Converted to float.
+
+   #### DataLicenciamento
+   Gives rise to _DiasDesdeLicenciamento_ which represents the number of days since the station's last licensing.
+
+   #### DataPrimeiroLicenciamento
+   Gives rise to _DiasDesdePrimeiro Licenciamento_ which represents the number of days since the station's first licensing.
+
+   #### DataValidade
+   Gives rise to _DiasAteExpirar_, which indicates how many days are left until the end of the validity of the RF associated with that station.
+
+   #### SiglaUf
+   Converted to string.
+
+   #### CodTipoClasseEstacao
+   Converted to string.
+
+   #### CodDebitoTFI
+   Converted to float.
+
+   #### FreqTxMHz and FreqRxMHz
+   Converted to float.
+
+Given that each row refers to a transmitter inside the station, we need now to group the data by station. So the main script causes the `aggregate_data.py` to run. It will further process columns for grouping and end up creating 27 csv files inside the `data/cleaned_csv_files`.
+
+### Grouping
+
+   The script will decide which is the appropriate grouping metric for each column.
 
 
 
