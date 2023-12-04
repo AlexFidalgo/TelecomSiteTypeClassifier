@@ -61,6 +61,10 @@ cons.to_csv(os.path.join(output_directory_path, 'Anatel.csv'), index=False)
 
 lab = cons[cons['ClassInfraFisica_agg_non_none'].notna()]
 
+get_rid_of_problematic_columns(anatel)
+
+rename_anatel_cols(anatel)
+
 labeled_directory_path = os.path.join(script_directory_parent, 'data', 'labeled_csv_files')
 if not os.path.exists(labeled_directory_path):
     os.makedirs(labeled_directory_path)
