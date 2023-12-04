@@ -5,7 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_val_score
-from clean_data_for_decision_tree import *
 
 def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max_depth, min_samples_split, min_samples_leaf):
 
