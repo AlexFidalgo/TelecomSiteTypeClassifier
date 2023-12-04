@@ -287,7 +287,6 @@ After renaming, we end up with the following columns:
 
 We will employ supervised machine learning techniques, since we have labeled data, which indicates the Site Type corresponding to each station.
 
-
 ## Results
 
 ### Decision Tree
