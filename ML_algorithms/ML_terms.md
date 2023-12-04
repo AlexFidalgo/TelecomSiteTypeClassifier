@@ -10,7 +10,7 @@ The `classification_report` function in scikit-learn provides a comprehensive su
    - The F1-score is the harmonic mean of precision and recall. It provides a balance between precision and recall. The formula is $\(2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\)$.
 
 ### 4. Support:
-   - The support is the number of actual occurrences of the class in the specified dataset. It helps to understand the distribution of classes in the dataset.
+   - The support is the number of actual occurrences of the class in the specified dataset. It represents the count of instances belonging to each class. It helps to understand the distribution of classes in the dataset.
 
 ### 5. Accuracy:
    - Accuracy is the overall correct predictions divided by the total number of predictions. It's a general measure of model performance.
