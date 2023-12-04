@@ -26,7 +26,7 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
 - FASTSITE
 The goal is to automate the site type classification process based on relevant features found in the Anatel data.
 
-## Getting Started
+## Using this Repository
 
 1. Clone this repository:
 
@@ -53,7 +53,7 @@ The goal is to automate the site type classification process based on relevant f
 
 4. Explore the data using the `explore_data.ipynb` Jupyter notebook.
 
-## Running Machine Learning Analyses
+### Running Machine Learning Analyses
 
 1. Run `ML_algorithms/DecisionTree/decision_tree.py` to perform a classification based on the Decision Tree model. You may explore it and play with the parameters and features by using the `DecisionTree/visualizer.ipynb`
 
