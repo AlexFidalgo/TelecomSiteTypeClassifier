@@ -3,6 +3,8 @@ import os
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_val_score
 from clean_data_for_decision_tree import *
 
 def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max_depth, min_samples_split, min_samples_leaf):
@@ -11,10 +13,10 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
 
     get_rid_of_problematic_columns(anatel)
 
-    rename_anatel_cols(df)
+    rename_anatel_cols(anatel)
 
     # Treatment of Null values
-    df = df.dropna()
+    anatel = anatel.dropna()
 
     # One-Hot Encoding
     anatel = pd.get_dummies(anatel, columns=['Polarization'], prefix='Polarization')
@@ -22,7 +24,7 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
     # Decision trees and random forests can handle boolean variables without encoding. They naturally make binary decisions based on the values of the features.
 
     # Station as the index
-    df['Station'] = df['Station'].astype(int)
+    anatel['Station'] = anatel['Station'].astype(int)
     anatel.set_index('Station', inplace=True)
 
     # Split data into features and target
@@ -41,9 +43,30 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
     y_pred = tree_model.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    classification_report = classification_report(y_test, y_pred)
+    cr = classification_report(y_test, y_pred)
 
-    return accuracy, classification_report
+    print(f"Accuracy: {accuracy}")
+    print(f"Classification Report: {classification_report}")
+
+    cm = confusion_matrix(y_test, y_pred)
+    print("\nConfusion Matrix:\n", cm)
+
+    feature_importances = tree_model.feature_importances_
+    print("Feature Importances:\n", feature_importances)
+
+    scores = cross_val_score(tree_model, X, y, cv=5)
+    print("Cross-Validation Scores:", scores)
+
+    param_grid = {
+        'criterion': ['gini', 'entropy'],
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': [2, 5, 10],
+        'min_samples_leaf': [1, 2, 4]
+    }
+    grid_search = GridSearchCV(tree_model, param_grid, cv=5)
+    grid_search.fit(X, y)
+    best_params = grid_search.best_params_
+    print("Best Hyperparameters:", best_params)
 
 
 if __name__ == '__main__':
@@ -70,9 +93,8 @@ if __name__ == '__main__':
     script_directory_parent2 = os.path.dirname(os.path.dirname(script_directory)) # parent of the directory of the script
     anatel_file_path = os.path.join(script_directory_parent2, 'data', 'labeled_csv_files', 'Anatel_labeled.csv')
 
-    accuracy, classification_report = CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, 
+    CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, 
                                                          max_depth, min_samples_split, min_samples_leaf)
 
-    print(f"Accuracy: {accuracy}")
-    print(f"Classification Report: {classification_report}")
+
 
