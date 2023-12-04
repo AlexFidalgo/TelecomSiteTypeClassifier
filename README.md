@@ -255,32 +255,6 @@ Given that each row refers to a transmitter inside the station, we need now to g
 Approximately 6% of stations are labeled. Rows with null values have been eliminated, considering their limited presence. _Station_ column is henceforth considered the index of the table.
 
 After renaming, we end up with the following columns:
-- Station: int (index of the table)
-- MinTxFreq: float
-- MaxTxFreq: float
-- MinRxFreq: float
-- MaxRxFreq: float
-- SiteType: string (target variable)
-- AntennaCode: int
-- AntennaGain: float
-- FrontBackAntennaRation: float
-- HalfPowerAngleAntenna: float
-- ElevationAngle: float
-- Polarization: string
-- AntennaHeight: float
-- TransmitterPower: float
-- NecessaryBandwidth: int
-- BasicFeatures: string
-- LTE: bool
-- WCDMA: bool
-- GSM: bool
-- NR_NSA: bool
-- NR_SA- NSA: bool
-- DMR: int
-- Digital: int
-- DaysSinceLicensing: int
-- DaysSinceFirstLicensing: int
-- DaysUntilExpiration: int
 
 | Variable Name             | Variable Type       | Observation                                 |
 |---------------------------|---------------------|---------------------------------------------|
