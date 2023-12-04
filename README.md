@@ -322,6 +322,27 @@ Parameters:
 
 ## Results
 
+- ```test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = None, min_samples_split = 2, min_samples_leaf = 1```
+   accuracy = 0.814
+   |          | Precision | Recall | F1-Score | Support |
+   |----------|-----------|--------|----------|---------|
+   | COW      | 0.50      | 0.46   | 0.48     | 28      |
+   | FASTSITE | 0.33      | 0.33   | 0.33     | 3       |
+   | GREENFIELD | 0.89   | 0.89   | 0.89     | 8509    |
+   | HARMONIZADA | 0.26  | 0.38   | 0.31     | 26      |
+   | INDOOR   | 0.84      | 0.78   | 0.81     | 241     |
+   | OUTDOOR  | 0.43      | 0.36   | 0.39     | 33      |
+   | RAN SHARING | 0.77  | 0.80   | 0.78     | 298     |
+   | ROOFTOP  | 0.49      | 0.49   | 0.49     | 1707    |
+   | SMALLCELL | 0.90    | 0.80   | 0.85     | 55      |
+   | STREETLEVEL | 0.64  | 0.59   | 0.61     | 102     |
+   | Accuracy |           |        | 0.81     | 11002   |
+   | Macro Avg | 0.60      | 0.59   | 0.59     | 11002   |
+   | Weighted Avg | 0.81   | 0.81   | 0.81     | 11002   |
+
+   ![Alt Text](images/cm_1.png)
+
+
 ### Decision Tree
 
 ## Author
