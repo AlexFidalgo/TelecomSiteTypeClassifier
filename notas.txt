@@ -23,3 +23,8 @@ FASTSITE          10
 Entender conceitos de decision tree
 Explorar calibração dos parâmetros
 Plotar gráficos
+
+----------------------------
+montar .md para apresentar
+avaliar quais colunas são realmente relevantes
+aplicar random forest e XGBoost
