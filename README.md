@@ -60,8 +60,6 @@ The goal is to automate the site type classification process based on relevant f
 
 
 ## Methodology
-Método: dados, extração, tratamento, variáveis (dizer o tipo de cada uma), técnicas utilizadas (por que escolheu essa, se é supervisionada)
-
 Anatel has a dataset containing information about all legal telecomunication stations in Brazil, which can be found [here](https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php?view=licenciamento). Each row of the dataset represents a telecomunication transmitter, present in a station.
 
 ### Columns
@@ -285,11 +283,14 @@ After renaming, we end up with the following columns:
 | DaysSinceFirstLicensing   | int                 | Days Since First Licensing                  |
 | DaysUntilExpiration       | int                 | Days Until Expiration                       |
 
+### ML Approach
 
-
+We will employ supervised machine learning techniques, since we have labeled data, which indicates the Site Type corresponding to each station.
 
 
 ## Results
+
+### Decision Tree
 
 
 ## Author
