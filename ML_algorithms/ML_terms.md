@@ -22,16 +22,6 @@ The classification report is a valuable tool for understanding how well your mod
 
 ![Alt Text](classification_report.jpg)
 
-### F1-Score:
-
-The F1-score is the harmonic mean of precision and recall. It provides a balance between precision and recall. The formula is:
-
-\[ F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \]
-
-Where:
-- **Precision** is the number of true positive predictions divided by the total number of positive predictions (true positives and false positives).
-- **Recall (Sensitivity or True Positive Rate)** is the number of true positive predictions divided by the total number of actual positives (true positives and false negatives).
-
 # One-Hot Encoding:
 - This technique is used for nominal (unordered) categorical data.
 - It creates binary columns for each category and represents the presence of a category with a 1 and the absence with a 0.
@@ -67,7 +57,6 @@ Scaling and normalizing are not strictly necessary for decision trees. Here's wh
 * Normalization (e.g., StandardScaler) changes the distribution of features, which can affect the splitting decisions.
 * This may lead to suboptimal tree structures and potentially worse performance.
 
-**In summary:**
 
 * Scaling is generally not necessary for decision trees but can be beneficial in some situations.
 * Normalization should be used cautiously and with awareness of its potential impact.
