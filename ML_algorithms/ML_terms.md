@@ -7,7 +7,7 @@ The `classification_report` function in scikit-learn provides a comprehensive su
    - Recall is the number of true positive predictions divided by the total number of actual positives (true positives and false negatives). It measures the ability of the model to capture all positive instances.
 
 ### 3. F1-Score:
-   - The F1-score is the harmonic mean of precision and recall. It provides a balance between precision and recall. The formula is \(2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\).
+   - The F1-score is the harmonic mean of precision and recall. It provides a balance between precision and recall. The formula is $\(2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\)$.
 
 ### 4. Support:
    - The support is the number of actual occurrences of the class in the specified dataset. It helps to understand the distribution of classes in the dataset.
