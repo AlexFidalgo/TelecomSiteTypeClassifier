@@ -16,10 +16,6 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
     anatel = pd.get_dummies(anatel, columns=['BasicFeatures'], prefix='BasicFeatures')
     # Decision trees and random forests can handle boolean variables without encoding. They naturally make binary decisions based on the values of the features.
 
-    # Station as the index
-    anatel['Station'] = anatel['Station'].astype(int)
-    anatel.set_index('Station', inplace=True)
-
     # Split data into features and target
     X = anatel.drop("SiteType", axis=1)
     y = anatel["SiteType"]
