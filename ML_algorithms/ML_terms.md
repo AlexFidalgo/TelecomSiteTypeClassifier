@@ -20,7 +20,7 @@ The `classification_report` function in scikit-learn provides a comprehensive su
 
 The classification report is a valuable tool for understanding how well your model is performing for each class, especially in imbalanced datasets where some classes might have fewer instances.
 
-![Alt Text](../../images/classification_report.jpg)
+![Alt Text](../images/classification_report.jpg)
 
 # One-Hot Encoding:
 - This technique is used for nominal (unordered) categorical data.
