@@ -252,37 +252,67 @@ Given that each row refers to a transmitter inside the station, we need now to g
    Each one of them gives rise to two columns: one indicates the minimum value found for all rows belonging to that station and the other indicates the maximum value.
 
 
-Approximately 6% of stations are labeled. 
+Approximately 6% of stations are labeled. Rows with null values have been eliminated, considering their limited presence. _Station_ column is henceforth considered the index of the table.
 
 After renaming, we end up with the following columns:
-- Station
-- MinTxFreq
-- MaxTxFreq
-- MinRxFreq
-- MaxRxFreq
-- SiteType
-- AntennaCode
-- AntennaGain
-- FrontBackAntennaRation
-- HalfPowerAngleAntenna
-- ElevationAngle
-- Polarization
-- AntennaHeight
-- TransmitterPower
-- NecessaryBandwidth
-- BasicFeatures
-- LTE
-- WCDMA
-- GSM
-- NR_NSA
-- NR_SA- NSA
-- DMR
-- Digital
-- DaysSinceLicensing
-- DaysSinceFirstLicensing
-- DaysUntilExpiration
+- Station: int (index of the table)
+- MinTxFreq: float
+- MaxTxFreq: float
+- MinRxFreq: float
+- MaxRxFreq: float
+- SiteType: string (target variable)
+- AntennaCode: int
+- AntennaGain: float
+- FrontBackAntennaRation: float
+- HalfPowerAngleAntenna: float
+- ElevationAngle: float
+- Polarization: string
+- AntennaHeight: float
+- TransmitterPower: float
+- NecessaryBandwidth: int
+- BasicFeatures: string
+- LTE: bool
+- WCDMA: bool
+- GSM: bool
+- NR_NSA: bool
+- NR_SA- NSA: bool
+- DMR: int
+- Digital: int
+- DaysSinceLicensing: int
+- DaysSinceFirstLicensing: int
+- DaysUntilExpiration: int
 
-Rows with null values have been eliminated, considering their limited presence.
+| Variable Name             | Variable Type       | Observation                                 |
+|---------------------------|---------------------|---------------------------------------------|
+| Station                   | int                 | Index of the table                          |
+| MinTxFreq                 | float               | Minimum Transmitting Frequency              |
+| MaxTxFreq                 | float               | Maximum Transmitting Frequency              |
+| MinRxFreq                 | float               | Minimum Receiving Frequency                 |
+| MaxRxFreq                 | float               | Maximum Receiving Frequency                 |
+| SiteType                  | string              | **Target variable**                         |
+| AntennaCode               | int                 | Antenna Code                                |
+| AntennaGain               | float               | Antenna Gain                                |
+| FrontBackAntennaRation    | float               | Front-to-Back Antenna Ratio                 |
+| HalfPowerAngleAntenna     | float               | Half Power Angle of Antenna                 |
+| ElevationAngle            | float               | Elevation Angle of Antenna                  |
+| Polarization              | string              | Polarization of the Antenna                 |
+| AntennaHeight             | float               | Antenna Height                              |
+| TransmitterPower          | float               | Transmitter Power                           |
+| NecessaryBandwidth        | int                 | Necessary Bandwidth                         |
+| BasicFeatures             | string              | Basic Features of the Antenna               |
+| LTE                       | bool                | LTE presence                                |
+| WCDMA                     | bool                | WCDMA presence                              |
+| GSM                       | bool                | GSM presence                                |
+| NR_NSA                    | bool                | NR NSA presence                             |
+| NR_SA-NSA                 | bool                | NR SA-NSA presence                          |
+| DMR                       | int                 | DMR presence                                |
+| Digital                   | int                 | Digital presence                            |
+| DaysSinceLicensing        | int                 | Days Since Last Licensing                   |
+| DaysSinceFirstLicensing   | int                 | Days Since First Licensing                  |
+| DaysUntilExpiration       | int                 | Days Until Expiration                       |
+
+
+
 
 
 ## Results
