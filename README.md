@@ -311,6 +311,34 @@ One-Hot Encoding will be applied:
    ```
 The remaining columns are not categorical.
 
+Parameters:
+
+| Parameter                 | Description      | Default value                                 |
+|---------------------------|---------------------|---------------------------------------------|
+| test_size                 | Proportion of the dataset to include in the test split                 |0.2|
+| random_state              | Controls the shuffling applied to the data before applying the split (pass int for reproducible output across multiple function cals)              |42|
+| criterion                 | The function to measure the quality of a split. Supported criteria are “gini” for the Gini impurity and “log_loss” and “entropy”   both for the Shannon information gain            |'gini'|
+| max_depth                 | The maximum depth of the tree. i=If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples            |None|
+| min_samples_split         | The minimum number of samples required to split an internal node               |2|
+| min_samples_leaf          | The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least min_samples_leaf training samples in each of the left and right branches.              |1|
+
+# Proportion of the dataset to include in the test split
+test_size = 0.2
+# Controls the shuffling applied to the data before applying the split (pass int for reproducible output across multiple function 
+# calls)
+random_state = 42
+# The function to measure the quality of a split. Supported criteria are “gini” for the Gini impurity and “log_loss” and “entropy” 
+# both for the Shannon information gain
+criterion = 'gini'
+# The maximum depth of the tree. i=If None, then nodes are expanded until all leaves are pure or until all leaves contain less than 
+# min_samples_split samples
+max_depth = None
+# The minimum number of samples required to split an internal node
+min_samples_split = 2
+# The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at 
+# least min_samples_leaf training samples in each of the left and right branches.
+min_samples_leaf = 1
+
 ## Author
 
 Alex Fidalgo
