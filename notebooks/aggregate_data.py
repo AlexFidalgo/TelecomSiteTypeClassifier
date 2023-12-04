@@ -67,6 +67,10 @@ rename_anatel_cols(lab)
 
 lab = lab.dropna() # Treatment of Null values
 
+# Station as the index
+lab['Station'] = lab['Station'].astype(int)
+lab.set_index('Station', inplace=True)
+
 labeled_directory_path = os.path.join(script_directory_parent, 'data', 'labeled_csv_files')
 if not os.path.exists(labeled_directory_path):
     os.makedirs(labeled_directory_path)
