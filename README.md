@@ -289,7 +289,7 @@ After renaming, we end up with the following columns:
 | MaxTxFreq                 | float               | Maximum Transmitting Frequency              |
 | MinRxFreq                 | float               | Minimum Receiving Frequency                 |
 | MaxRxFreq                 | float               | Maximum Receiving Frequency                 |
-| SiteType                  | string              | **Target variable**                         |
+| **SiteType**              | string              | **Target variable**                         |
 | AntennaCode               | int                 | Antenna Code                                |
 | AntennaGain               | float               | Antenna Gain                                |
 | FrontBackAntennaRation    | float               | Front-to-Back Antenna Ratio                 |
