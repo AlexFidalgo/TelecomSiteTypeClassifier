@@ -246,12 +246,43 @@ Firstly, the data is unziped into the `data/csv_files` folder. Then `notebooks/m
    #### FreqTxMHz and FreqRxMHz
    Converted to float.
 
-Given that each row refers to a transmitter inside the station, we need now to group the data by station. So the main script causes the `aggregate_data.py` to run. It will further process columns for grouping and end up creating 27 csv files inside the `data/cleaned_csv_files`.
+Given that each row refers to a transmitter inside the station, we need now to group the data by station. So the main script causes the `aggregate_data.py` to run. It will further process columns for grouping and end up creating a single csv file inside the `labeled_csv_files` folder with all the station instances which are labeled. 
 
-### Grouping
+   #### FreqTxMHz and FreqRxMHz
+   Each one of them gives rise to two columns: one indicates the minimum value found for all rows belonging to that station and the other indicates the maximum value.
 
-   The script will decide which is the appropriate grouping metric for each column.
 
+Approximately 6% of stations are labeled. 
+
+After renaming, we end up with the following columns:
+- Station
+- MinTxFreq
+- MaxTxFreq
+- MinRxFreq
+- MaxRxFreq
+- SiteType
+- AntennaCode
+- AntennaGain
+- FrontBackAntennaRation
+- HalfPowerAngleAntenna
+- ElevationAngle
+- Polarization
+- AntennaHeight
+- TransmitterPower
+- NecessaryBandwidth
+- BasicFeatures
+- LTE
+- WCDMA
+- GSM
+- NR_NSA
+- NR_SA- NSA
+- DMR
+- Digital
+- DaysSinceLicensing
+- DaysSinceFirstLicensing
+- DaysUntilExpiration
+
+Rows with null values have been eliminated, considering their limited presence.
 
 
 ## Results

@@ -11,9 +11,6 @@ def CreateDecisionTree(anatel_file_path, test_size, random_state, criterion, max
 
     anatel = pd.read_csv(anatel_file_path)
 
-    # Treatment of Null values
-    anatel = anatel.dropna()
-
     # One-Hot Encoding
     anatel = pd.get_dummies(anatel, columns=['Polarization'], prefix='Polarization')
     anatel = pd.get_dummies(anatel, columns=['BasicFeatures'], prefix='BasicFeatures')
