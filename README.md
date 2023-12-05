@@ -773,7 +773,6 @@ To ensure the robustness of these models, cross-validation was employed. For the
 
 The most relevant variables to predict Site Type were generally the height of the antenna, the frequency employed by the station, the gain of the antenna, and the transmitter power.
 
-
 ## Author
 
 Alex Fidalgo
