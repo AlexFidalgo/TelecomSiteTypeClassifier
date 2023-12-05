@@ -761,8 +761,15 @@ Let's limit max_depth to 3 and remove variables whose feature importance is less
    | AntennaHeight     | 0.3411     |
    | TransmitterPower  | 0.1887     |
 
+   Cross-Validation Scores: [0.79112889 0.80365421 0.7916553  0.78474684 0.78947368]
+   Mean Accuracy: 0.7921317856761085
+   Standard Deviation of Accuracy: 0.006254631704901671
 
+### Discussion
 
+In this project, machine learning models were implemented utilizing Decision Trees and Random Forest techniques, each with distinct parameterizations. The highest accuracy achieved was 87%, observed during an iteration of the Random Forest. However, considerations regarding the model's complexity prompted a reduction in the number of variables, wherein only the most influential features were retained in the model. Additionally, the depth of the decision trees was intentionally reduced to mitigate the risk of overfitting, a phenomenon wherein a model performs exceptionally well on the training data but struggles to generalize to unseen data.
+
+To ensure the robustness of these models, cross-validation was employed. For the Random Forest model, the average accuracy across different cross-validation folds was 79%, while the Decision Tree model exhibited an average cross-validation accuracy of 78%. Cross-validation is a technique used to assess a model's performance by partitioning the dataset into multiple subsets, training the model on a subset, and validating it on the remaining data. This helps provide a more reliable estimate of a model's generalization performance.
 
 
 ## Author
