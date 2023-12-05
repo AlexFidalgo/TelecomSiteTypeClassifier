@@ -425,6 +425,7 @@ Parameters:
    | Weighted Avg|0.82      | 0.82   | 0.82     | 11002   |
 
    Confusion matrix:
+   
    ![Alt Text](images/cm_2.png)
 
    Feature importance:
@@ -484,6 +485,7 @@ Parameters:
    | Weighted Avg|0.82      | 0.81   | 0.82     | 11002   |
 
    Confusion matrix:
+
    ![Alt Text](images/cm_3.png)
 
    Cross Validation
@@ -516,7 +518,7 @@ After _grid searching_ for the best parameters, these were the ones found.
    | Macro Avg  | 0.61      | 0.52   | 0.56     | 11002   |
    | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
 
-   Confusion matrix:
+   Confusion matrix
    ![Alt Text](images/cm_4.png)
 
    Cross Validation
@@ -545,7 +547,7 @@ After _grid searching_ for the best parameters, these were the ones found.
    | Macro Avg  | 0.62      | 0.52   | 0.56     | 11002   |
    | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
 
-   Confusion matrix:
+   Confusion matrix
    ![Alt Text](images/cm_5.png)
 
    Cross Validation
