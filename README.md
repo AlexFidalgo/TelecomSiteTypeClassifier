@@ -530,7 +530,7 @@ After _grid searching_ for the best parameters, these were the ones found.
    | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
 
    Confusion matrix:
-   
+
    ![Alt Text](images/cm_4.png)
 
    Cross Validation
@@ -644,6 +644,124 @@ Let's reduce max_depth even further.
    Standard Deviation of Accuracy: 0.004830426043151408
 
 ### Random Forest
+
+```n_estimators = 100, test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = None, min_samples_split = 2, min_samples_leaf = 1```
+
+   ### Run 1
+
+   Accuracy: 0.87
+   |  SiteType  | Precision | Recall | F1-Score | Support |
+   |------------|-----------|--------|----------|---------|
+   | COW        | 1.00      | 0.32   | 0.49     | 28      |
+   | FASTSITE   | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD | 0.88      | 0.96   | 0.92     | 8509    |
+   | HARMONIZADA| 0.50      | 0.38   | 0.43     | 26      |
+   | INDOOR     | 0.92      | 0.86   | 0.89     | 241     |
+   | OUTDOOR    | 0.85      | 0.33   | 0.48     | 33      |
+   | RAN SHARING| 0.95      | 0.79   | 0.86     | 298     |
+   | ROOFTOP    | 0.71      | 0.44   | 0.54     | 1707    |
+   | SMALLCELL  | 1.00      | 0.91   | 0.95     | 55      |
+   | STREETLEVEL| 0.78      | 0.68   | 0.73     | 102     |
+   | Accuracy   |           |        | 0.87     | 11002   |
+   | Macro Avg  | 0.76      | 0.57   | 0.63     | 11002   |
+   | Weighted Avg| 0.86     | 0.87   | 0.85     | 11002   |
+
+   Confusion matrix:
+
+   ![Alt Text](images/cm_8.png)
+
+   | Feature                    | Importance |
+   |----------------------------|------------|
+   | MaxTxFreq                  | 0.0655     |
+   | MinRxFreq                  | 0.0665     |
+   | AntennaCode                | 0.0166     |
+   | AntennaGain                | 0.0917     |
+   | FrontBackAntennaRation     | 0.0472     |
+   | AnguloMeiaPotenciaAntena_max| 0.0659     |
+   | ElevationAngle             | 0.0584     |
+   | AntennaHeight              | 0.1630     |
+   | TransmitterPower           | 0.0658     |
+   | NecessaryBandwidth         | 0.0300     |
+   | LTE                        | 0.0058     |
+   | WCDMA                      | 0.0100     |
+   | GSM                        | 0.0137     |
+   | NR_NSA                     | 0.0000     |
+   | NR_SA-NSA                  | 0.0018     |
+   | DMR                        | 0.0000     |
+   | Digital                    | 0.0000     |
+   | DaysSinceLicensing         | 0.0885     |
+   | DaysSinceFirstLicensing    | 0.1377     |
+   | DaysUntilExpiration        | 0.0549     |
+   | Polarization_X             | 0.0090     |
+   | BasicFeatures_0G7          | 0.0000     |
+   | BasicFeatures_0G9          | 0.0001     |
+   | BasicFeatures_7W           | 0.0000     |
+   | BasicFeatures_D7D          | 0.0000     |
+   | BasicFeatures_D7W          | 0.0021     |
+   | BasicFeatures_D9W          | 0.0009     |
+   | BasicFeatures_F8W          | 0.0000     |
+   | BasicFeatures_G7E          | 0.0000     |
+   | BasicFeatures_G9W          | 0.0045     |
+   | BasicFeatures_M7W          | 0.0003     |
+
+   ### Run 2
+   Let's remove features whose importance is less than 0.1
+
+   Accuracy: 0.78
+   |            | Precision | Recall | F1-Score | Support |
+   |------------|-----------|--------|----------|---------|
+   | COW        | 0.42      | 0.46   | 0.44     | 28      |
+   | FASTSITE   | 0.50      | 0.67   | 0.57     | 3       |
+   | GREENFIELD | 0.84      | 0.90   | 0.87     | 8509    |
+   | HARMONIZADA| 0.62      | 0.31   | 0.41     | 26      |
+   | INDOOR     | 0.67      | 0.60   | 0.63     | 241     |
+   | OUTDOOR    | 0.31      | 0.30   | 0.31     | 33      |
+   | RAN SHARING| 0.57      | 0.51   | 0.54     | 298     |
+   | ROOFTOP    | 0.39      | 0.28   | 0.32     | 1707    |
+   | SMALLCELL  | 0.62      | 0.73   | 0.67     | 55      |
+   | STREETLEVEL| 0.67      | 0.57   | 0.62     | 102     |
+   | Accuracy   |           |        | 0.78     | 11002   |
+   | Macro Avg  | 0.56      | 0.53   | 0.54     | 11002   |
+   | Weighted Avg| 0.76     | 0.78   | 0.76     | 11002   |
+
+
+   Confusion matrix:
+
+   ![Alt Text](images/cm_9.png)
+
+```n_estimators = 100, test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = 3, min_samples_split = 2, min_samples_leaf = 1```
+Let's limit max_depth to 3 and remove variables whose feature importance is less than 0.1.
+
+   Accuracy: 0.80
+   |            | Precision | Recall | F1-Score | Support |
+   |------------|-----------|--------|----------|---------|
+   | COW        | 0.00      | 0.00   | 0.00     | 28      |
+   | FASTSITE   | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD | 0.80      | 0.99   | 0.88     | 8509    |
+   | HARMONIZADA| 0.00      | 0.00   | 0.00     | 26      |
+   | INDOOR     | 0.77      | 0.75   | 0.76     | 241     |
+   | OUTDOOR    | 0.00      | 0.00   | 0.00     | 33      |
+   | RAN SHARING| 0.00      | 0.00   | 0.00     | 298     |
+   | ROOFTOP    | 0.77      | 0.05   | 0.10     | 1707    |
+   | SMALLCELL  | 0.88      | 0.42   | 0.57     | 55      |
+   | STREETLEVEL| 0.00      | 0.00   | 0.00     | 102     |
+   | Accuracy   |           |        | 0.80     | 11002   |
+   | Macro Avg  | 0.32      | 0.22   | 0.23     | 11002   |
+   | Weighted Avg| 0.76     | 0.80   | 0.72     | 11002   |
+
+   Confusion matrix:
+
+   ![Alt Text](images/cm_10.png)
+
+
+   | Feature           | Importance |
+   |-------------------|------------|
+   | MaxTxFreq         | 0.3000     |
+   | AntennaGain       | 0.1701     |
+   | AntennaHeight     | 0.3411     |
+   | TransmitterPower  | 0.1887     |
+
+
 
 
 
