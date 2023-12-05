@@ -340,7 +340,49 @@ Parameters:
    | Macro Avg | 0.60      | 0.59   | 0.59     | 11002   |
    | Weighted Avg | 0.81   | 0.81   | 0.81     | 11002   |
 
+   Confusion Matrix:
    ![Alt Text](images/cm_1.png)
+
+   Feature Importance:
+   This list contains the feature importances for each feature, and you can use this information to identify which features have the most influence on the model's predictions. Features with higher importances are more critical to the model's decision-making process. The values are normalized, and the sum of all importances should be 1.
+   | Feature                       | Importance |
+   |-------------------------------|------------|
+   | MinTxFreq                     | 0.0714     |
+   | MaxTxFreq                     | 0.0098     |
+   | MinRxFreq                     | 0.0199     |
+   | MaxRxFreq                     | 0.0888     |
+   | AntennaCode                   | 0.0086     |
+   | AntennaGain                   | 0.0709     |
+   | FrontBackAntennaRation        | 0.0341     |
+   | AnguloMeiaPotenciaAntena_max  | 0.0561     |
+   | ElevationAngle                | 0.0613     |
+   | AntennaHeight                 | 0.1909     |
+   | TransmitterPower              | 0.0380     |
+   | NecessaryBandwidth            | 0.0313     |
+   | LTE                           | 0.0008     |
+   | WCDMA                         | 0.0041     |
+   | GSM                           | 0.0081     |
+   | NR_NSA                        | 0.0000     |
+   | NR_SA-NSA                     | 0.0020     |
+   | DMR                           | 0.0000     |
+   | Digital                       | 0.0000     |
+   | DaysSinceLicensing            | 0.0838     |
+   | DaysSinceFirstLicensing       | 0.1496     |
+   | DaysUntilExpiration           | 0.0525     |
+   | Polarization_V                | 0.0001     |
+   | Polarization_X                | 0.0107     |
+   | BasicFeatures_0G7             | 0.0000     |
+   | BasicFeatures_0G9             | 0.0001     |
+   | BasicFeatures_7W              | 0.0000     |
+   | BasicFeatures_D7D             | 0.0000     |
+   | BasicFeatures_D7W             | 0.0009     |
+   | BasicFeatures_D9W             | 0.0005     |
+   | BasicFeatures_F8W             | 0.0000     |
+   | BasicFeatures_G7E             | 0.0000     |
+   | BasicFeatures_G7W             | 0.0034     |
+   | BasicFeatures_G9W             | 0.0020     |
+   | BasicFeatures_M7W             | 0.0003     |
+
 
 
 ### Decision Tree
