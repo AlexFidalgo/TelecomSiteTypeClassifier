@@ -336,6 +336,8 @@ Parameters:
 
 ## Results
 
+### Decision Tree
+
 ```test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = None, min_samples_split = 2, min_samples_leaf = 1```
 
 #### Run 1
@@ -486,12 +488,72 @@ Parameters:
 
    Cross Validation
    Cross-Validation Scores: [0.7640429  0.73275157 0.71048087 0.71911644 0.66703027]
-   Mean Accuracy: 0.7186844097281831
+   Mean Accuracy: 0.719
    Standard Deviation of Accuracy: 0.031594026799018106
 
 
+```test_size = 0.2, random_state = 42, criterion = 'entropy', max_depth = 10, min_samples_split = 2, min_samples_leaf = 4```
 
-### Decision Tree
+After _grid searching_ for the best parameters, these were the ones found.
+
+   #### Run 1
+
+   accuracy = 0.844
+   |            | Precision | Recall | F1-Score | Support |
+   |------------|-----------|--------|----------|---------|
+   | COW        | 0.38      | 0.36   | 0.37     | 28      |
+   | FASTSITE   | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD | 0.87      | 0.95   | 0.91     | 8509    |
+   | HARMONIZADA| 0.36      | 0.15   | 0.22     | 26      |
+   | INDOOR     | 0.90      | 0.83   | 0.86     | 241     |
+   | OUTDOOR    | 0.48      | 0.39   | 0.43     | 33      |
+   | RAN SHARING| 0.89      | 0.73   | 0.81     | 298     |
+   | ROOFTOP    | 0.62      | 0.39   | 0.48     | 1707    |
+   | SMALLCELL  | 0.86      | 0.78   | 0.82     | 55      |
+   | STREETLEVEL| 0.70      | 0.63   | 0.66     | 102     |
+   |------------|-----------|--------|----------|---------|
+   | Accuracy   |           |        |          | 0.84    |
+   | Macro Avg  | 0.61      | 0.52   | 0.56     | 11002   |
+   | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
+
+   Confusion matrix:
+   ![Alt Text](images/cm_4.png)
+
+   Cross Validation
+   Cross-Validation Scores: [0.82385021 0.83065176 0.80765385 0.8021998  0.78256522]
+   Mean Accuracy: 0.8093841677991265
+   Standard Deviation of Accuracy: 0.01694368208157045
+
+   #### Run 2
+   Removing features of too little importance
+
+   Accuracy: 0.844
+   |            | Precision | Recall | F1-Score | Support |
+   |------------|-----------|--------|----------|---------|
+   | COW        | 0.43      | 0.36   | 0.39     | 28      |
+   | FASTSITE   | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD | 0.87      | 0.95   | 0.91     | 8509    |
+   | HARMONIZADA| 0.36      | 0.15   | 0.22     | 26      |
+   | INDOOR     | 0.90      | 0.82   | 0.86     | 241     |
+   | OUTDOOR    | 0.48      | 0.39   | 0.43     | 33      |
+   | RAN SHARING| 0.89      | 0.74   | 0.81     | 298     |
+   | ROOFTOP    | 0.62      | 0.39   | 0.48     | 1707    |
+   | SMALLCELL  | 0.90      | 0.78   | 0.83     | 55      |
+   | STREETLEVEL| 0.70      | 0.63   | 0.66     | 102     |
+   |------------|-----------|--------|----------|---------|
+   | Accuracy   |           |        |          | 0.84    |
+   | Macro Avg  | 0.62      | 0.52   | 0.56     | 11002   |
+   | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
+
+   Confusion matrix:
+   ![Alt Text](images/cm_5.png)
+
+   Cross Validation
+   Cross-Validation Scores: [0.82194147 0.83292428 0.81074448 0.80047268 0.78429234]
+   Mean Accuracy: 0.8100750487871069
+   Standard Deviation of Accuracy: 0.016854085263333343
+
+
 
 ## Author
 
