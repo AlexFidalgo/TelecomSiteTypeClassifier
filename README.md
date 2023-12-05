@@ -336,7 +336,8 @@ Parameters:
 
 ## Results
 
-- ```test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = None, min_samples_split = 2, min_samples_leaf = 1```
+```test_size = 0.2, random_state = 42, criterion = 'gini', max_depth = None, min_samples_split = 2, min_samples_leaf = 1```
+
 #### Run 1
    accuracy = 0.814
    |          | Precision | Recall | F1-Score | Support |
