@@ -25,6 +25,4 @@ Explorar calibração dos parâmetros
 Plotar gráficos
 
 ----------------------------
-montar .md para apresentar
-avaliar quais colunas são realmente relevantes
-aplicar random forest e XGBoost
+aplicar random forest ou XGBoost

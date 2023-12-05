@@ -403,6 +403,7 @@ Parameters:
    #### Run 2
 
    We'll rerun these results _getting rid of columns that are highly correlated_ to other existing columns.
+
    accuracy = 0.815
    |            | Precision | Recall | F1-Score | Support |
    |------------|-----------|--------|----------|---------|
@@ -460,7 +461,8 @@ Parameters:
    | BasicFeatures_M7W         | 0.0001     |
 
    #### Run 3
-   We'll rerun these results _getting rid of columns whose feature importance is less than 1%
+   We'll rerun these results _getting rid of columns whose feature importance is less than 1%.
+
    accuracy = 0.814
    |            | Precision | Recall | F1-Score | Support |
    |------------|-----------|--------|----------|---------|
@@ -481,6 +483,11 @@ Parameters:
 
    Confusion matrix:
    ![Alt Text](images/cm_3.png)
+
+   Cross Validation
+   Cross-Validation Scores: [0.7640429  0.73275157 0.71048087 0.71911644 0.66703027]
+   Mean Accuracy: 0.7186844097281831
+   Standard Deviation of Accuracy: 0.031594026799018106
 
 
 
