@@ -23,6 +23,7 @@ The Telecom Site Type Classifier project utilizes machine learning techniques to
 - SMALLCELL   
 - COW
 - FASTSITE
+
 The goal is to automate the site type classification process based on relevant features found in the Anatel data.
 
 ## Using this Repository
