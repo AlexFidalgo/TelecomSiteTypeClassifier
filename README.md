@@ -425,7 +425,7 @@ Parameters:
    | Weighted Avg|0.82      | 0.82   | 0.82     | 11002   |
 
    Confusion matrix:
-   
+
    ![Alt Text](images/cm_2.png)
 
    Feature importance:
@@ -488,7 +488,7 @@ Parameters:
 
    ![Alt Text](images/cm_3.png)
 
-   Cross Validation
+   Cross Validation:
    Cross-Validation Scores: [0.7640429  0.73275157 0.71048087 0.71911644 0.66703027]
    Mean Accuracy: 0.719
    Standard Deviation of Accuracy: 0.031594026799018106
@@ -547,13 +547,91 @@ After _grid searching_ for the best parameters, these were the ones found.
    | Macro Avg  | 0.62      | 0.52   | 0.56     | 11002   |
    | Weighted Avg|0.83      | 0.84   | 0.83     | 11002   |
 
-   Confusion matrix
+   Confusion matrix:
+
    ![Alt Text](images/cm_5.png)
 
-   Cross Validation
+   Cross Validation:
    Cross-Validation Scores: [0.82194147 0.83292428 0.81074448 0.80047268 0.78429234]
    Mean Accuracy: 0.8100750487871069
    Standard Deviation of Accuracy: 0.016854085263333343
+
+```test_size = 0.2, random_state = 42, criterion = 'entropy', max_depth = 3, min_samples_split = 2, min_samples_leaf = 4```
+Now let's run a simplified model to avoid overfitting. We will get rid of features with importance lower than 0.1.
+
+   #### Run 1
+
+   Accuracy: 0.789
+   | SiteType     | Precision | Recall | F1-Score | Support |
+   |--------------|-----------|--------|----------|---------|
+   | COW          | 0.00      | 0.00   | 0.00     | 28      |
+   | FASTSITE     | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD   | 0.79      | 0.99   | 0.88     | 8509    |
+   | HARMONIZADA  | 0.00      | 0.00   | 0.00     | 26      |
+   | INDOOR       | 0.83      | 0.63   | 0.72     | 241     |
+   | OUTDOOR      | 0.00      | 0.00   | 0.00     | 33      |
+   | RAN SHARING  | 0.56      | 0.43   | 0.48     | 298     |
+   | ROOFTOP      | 0.00      | 0.00   | 0.00     | 1707    |
+   | SMALLCELL    | 0.00      | 0.00   | 0.00     | 55      |
+   | STREETLEVEL  | 0.00      | 0.00   | 0.00     | 102     |
+   | Accuracy     |           |        | 0.79     | 11002   |
+   | Macro Avg    | 0.22      | 0.20   | 0.21     | 11002   |
+   | Weighted Avg | 0.65      | 0.79   | 0.71     | 11002   |
+
+   | Feature           | Importance |
+   |-------------------|------------|
+   | MaxTxFreq         | 0.2021     |
+   | MinRxFreq         | 0.1923     |
+   | AntennaGain       | 0.1728     |
+   | AntennaHeight     | 0.4328     |
+
+   Confusion matrix:
+
+   ![Alt Text](images/cm_6.png)
+
+   Cross Validation:
+   Cross-Validation Scores: [0.7896746  0.79192801 0.79047359 0.80001818 0.78529225]
+   Mean Accuracy: 0.7914773261593562
+   Standard Deviation of Accuracy: 0.0048096111934332175
+
+```test_size = 0.2, random_state = 42, criterion = 'entropy', max_depth = 3, min_samples_split = 2, min_samples_leaf = 4```
+Let's reduce max_depth even further.
+
+   ### Run 1
+
+   Accuracy: 0.7862206871477914
+   | SiteType     | Precision | Recall | F1-Score | Support |
+   |--------------|-----------|--------|----------|---------|
+   | COW          | 0.00      | 0.00   | 0.00     | 28      |
+   | FASTSITE     | 0.00      | 0.00   | 0.00     | 3       |
+   | GREENFIELD   | 0.79      | 0.99   | 0.88     | 8509    |
+   | HARMONIZADA  | 0.00      | 0.00   | 0.00     | 26      |
+   | INDOOR       | 0.59      | 0.84   | 0.70     | 241     |
+   | OUTDOOR      | 0.00      | 0.00   | 0.00     | 33      |
+   | RAN SHARING  | 0.00      | 0.00   | 0.00     | 298     |
+   | ROOFTOP      | 0.00      | 0.00   | 0.00     | 1707    |
+   | SMALLCELL    | 0.00      | 0.00   | 0.00     | 55      |
+   | STREETLEVEL  | 0.00      | 0.00   | 0.00     | 102     |
+   | Accuracy     |           |        | 0.79     | 11002   |
+   | Macro Avg    | 0.14      | 0.18   | 0.16     | 11002   |
+   | Weighted Avg | 0.63      | 0.79   | 0.70     | 11002   |
+
+   | Feature        | Importance |
+   |----------------|------------|
+   | MaxTxFreq      | 0.2676     |
+   | AntennaGain    | 0.2289     |
+   | AntennaHeight  | 0.5035     |
+
+   Confusion matrix:
+
+   ![Alt Text](images/cm_7.png)
+
+   Cross validation:
+   Cross-Validation Scores: [0.79194692 0.79456413 0.78583765 0.78347423 0.78220162]
+   Mean Accuracy: 0.7876049096096946
+   Standard Deviation of Accuracy: 0.004830426043151408
+
+
 
 
 
