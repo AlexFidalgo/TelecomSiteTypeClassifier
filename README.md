@@ -334,6 +334,16 @@ Parameters:
 | min_samples_split         | The minimum number of samples required to split an internal node               |2|
 | min_samples_leaf          | The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least min_samples_leaf training samples in each of the left and right branches.              |1|
 
+### Random Forest
+
+The previous steps of encoding and removing highly correlated variables also apply. A lot of the parameters are shared with the DecisionTree function. 
+
+Parameters:
+
+| Parameter                 | Description      | Default value                                 |
+|---------------------------|---------------------|---------------------------------------------|
+| n_estimators                 | The number of trees in the forest.                 |100|
+
 ## Results
 
 ### Decision Tree
@@ -631,7 +641,7 @@ Let's reduce max_depth even further.
    Mean Accuracy: 0.7876049096096946
    Standard Deviation of Accuracy: 0.004830426043151408
 
-
+### Random Forest
 
 
 
