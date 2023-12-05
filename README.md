@@ -771,6 +771,8 @@ In this project, machine learning models were implemented utilizing Decision Tre
 
 To ensure the robustness of these models, cross-validation was employed. For the Random Forest model, the average accuracy across different cross-validation folds was 79%, while the Decision Tree model exhibited an average cross-validation accuracy of 78%. Cross-validation is a technique used to assess a model's performance by partitioning the dataset into multiple subsets, training the model on a subset, and validating it on the remaining data. This helps provide a more reliable estimate of a model's generalization performance.
 
+The most relevant variables to predict Site Type were generally the height of the antenna, the frequency employed by the station, the gain of the antenna, and the transmitter power.
+
 
 ## Author
 
