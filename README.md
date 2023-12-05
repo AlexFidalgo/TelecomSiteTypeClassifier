@@ -56,7 +56,7 @@ The goal is to automate the site type classification process based on relevant f
 
    #### Running Machine Learning Analyses
 
-   1. Run `ML_algorithms/DecisionTree/decision_tree.py` to perform a classification based on the Decision Tree model. You may explore it and play with the parameters and features by using the `DecisionTree/visualizer.ipynb`.
+   1. Run `ML_algorithms/DecisionTree/decision_tree.py` to perform a classification based on the Decision Tree model. You may explore it and play with the parameters and features by using the `DecisionTree/decision_tree.ipynb`.
 
 
 ## Methodology
