@@ -309,6 +309,20 @@ One-Hot Encoding will be applied:
    ```
 The remaining columns are not categorical.
 
+#### Correlation
+
+When features are highly correlated, it can confuse your model, making it hard to distinguish their individual effects. Removing one can improve model stability and interpretation. If both columns essentially convey the same thing, keeping just one reduces complexity and saves computational resources. Having fewer features makes your model easier to understand and explain.
+```shell
+anatel_numeric = anatel.drop("SiteType", axis=1)
+anatel_numeric.corr()   
+```
+Let's list correlations that are greater than 0.8:
+   - **Polarization_V** and **Polarization_X** (-1)
+   - **MinTxFreq** and **MinRxFreq** (0.988517726)
+   - **MaxRxFreq** and **MaxTxFreq** (0.994260128)
+   - **BasicFeatures_G7W** and **BasicFeatures_G9W** (-0.824558493)
+
+
 Parameters:
 
 | Parameter                 | Description      | Default value                                 |
@@ -341,6 +355,7 @@ Parameters:
    | Weighted Avg | 0.81   | 0.81   | 0.81     | 11002   |
 
    Confusion Matrix:
+
    ![Alt Text](images/cm_1.png)
 
    Feature Importance:
@@ -382,6 +397,11 @@ Parameters:
    | BasicFeatures_G7W             | 0.0034     |
    | BasicFeatures_G9W             | 0.0020     |
    | BasicFeatures_M7W             | 0.0003     |
+
+   We'll rerun these results _getting rid of columns that are highly correlated_ to other existing columns.
+
+
+
 
 
 
